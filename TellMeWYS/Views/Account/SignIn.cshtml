@@ -1,0 +1,17 @@
+﻿@model System.Collections.Generic.ICollection<Microsoft.Web.WebPages.OAuth.AuthenticationClientData>
+@{
+    ViewBag.Title = "Sign in";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("ExternalLogin", "Account"))
+{
+    @Html.AntiForgeryToken()
+    foreach (AuthenticationClientData p in Model)
+    {
+        <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">
+            @p.DisplayName
+        </button>
+    }
+}

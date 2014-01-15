@@ -14,6 +14,18 @@ namespace TellMeWYS
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ChannelList",
+                url: "Channel/List",
+                defaults: new { controller = "Channel", action = "List" }
+            );
+
+            routes.MapRoute(
+                name: "Channel",
+                url: "Channel/{id}/{action}/{id2}",
+                defaults: new { controller = "Channel", action = "Index", id2 = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
