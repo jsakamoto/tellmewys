@@ -28,6 +28,11 @@ namespace TellMeWYS
                 url: "Channel/Create",
                 defaults: new { controller = "Channel", action = "Create" }
             );
+            routes.MapRoute(
+                name: "ChannelMessage",
+                url: "Channel/Message",
+                defaults: new { controller = "Channel", action = "Message" }
+            );
 
             routes.MapRoute(
                 name: "Channel",

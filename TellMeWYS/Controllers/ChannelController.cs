@@ -53,7 +53,7 @@ namespace TellMeWYS.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Index(string id, string url)
+        public ActionResult Message(string id, string url)
         {
             // TODO: Enable CORS
 
