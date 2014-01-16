@@ -5,10 +5,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using TellMeWYS.Hubs;
 using TellMeWYS.Models;
 
 namespace TellMeWYS.Controllers
 {
+    using SignalR = Microsoft.AspNet.SignalR;
+
     [Authorize]
     public class ChannelController : Controller
     {
@@ -41,19 +44,37 @@ namespace TellMeWYS.Controllers
             var db = this.DB();
             var channel = db.Channels.Find(id);
             if (channel == null) return HttpNotFound();
-            
+
             var account = this.HttpContext.Account();
             if (channel.ChannelMembers.Any(_ => _.AccountId == account.Id) == false) return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
-            
+
             return View(channel);
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Index(Guid id, Object model)
+        public ActionResult Index(string id, string url)
         {
             // TODO: Enable CORS
-            return View();
+
+            var channelGuid = default(Guid);
+            if (Guid.TryParse(id, out channelGuid) == false) return HttpNotFound();
+
+            var db = this.DB();
+            var channel = db.Channels.Find(channelGuid);
+            if (channel == null) return HttpNotFound();
+
+            var isSafe = false;
+            var exactUri = default(Uri);
+            if (Uri.TryCreate(url, UriKind.Absolute, out exactUri) == true)
+            {
+                isSafe = (exactUri.Scheme == "http" || exactUri.Scheme == "https");
+            }
+
+            var channelHubContext = SignalR.GlobalHost.ConnectionManager.GetHubContext<ChannelHub>();
+            channelHubContext.Clients.Group(channel.Id.ToString("N")).SendUrl(url, isSafe);
+
+            return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
 
         [AllowAnonymous]
@@ -67,7 +88,7 @@ namespace TellMeWYS.Controllers
         public ActionResult Create()
         {
             if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            
+
             var account = this.HttpContext.Account();
             var newChannel = new Channel();
             newChannel.ChannelMembers.Add(new ChannelMember

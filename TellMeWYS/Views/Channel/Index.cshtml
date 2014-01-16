@@ -8,3 +8,16 @@
 </div>
 
 <h2>@ViewBag.Title</h2>
+
+<div id="log-holder">
+
+</div>
+
+@section scripts {
+    <script>
+        $.app = $.app || {};
+        $.app.channelId = '@Model.Id.ToString("N")';
+    </script>
+    @Scripts.Render("~/bundles/signalr")
+    <script src="~/Views/Channel/Index.js"></script>
+}

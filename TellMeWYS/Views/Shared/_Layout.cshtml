@@ -28,6 +28,9 @@
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
+    <script>
+        $.app = $.app || {};
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

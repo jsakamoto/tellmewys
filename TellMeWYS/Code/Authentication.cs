@@ -58,5 +58,11 @@ namespace TellMeWYS
             var account = db.Accounts.FirstOrDefault(_ => _.UniqueIdInProvider == context.User.Identity.Name);
             return account;
         }
+
+        public static Account ToAccount(this IPrincipal principal, TellMeWYSDB db)
+        {
+            var account = db.Accounts.FirstOrDefault(_ => _.UniqueIdInProvider == principal.Identity.Name);
+            return account;
+        }
     }
 }
