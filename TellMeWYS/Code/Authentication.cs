@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json;
+using TellMeWYS.Models;
 
 namespace TellMeWYS
 {
@@ -49,6 +50,13 @@ namespace TellMeWYS
             if (formsIdentity == null) return "";
             var authUserData = formsIdentity.Ticket.UserData.AsJsonTo<AuthTicketUserData>();
             return authUserData.AccountName;
+        }
+
+        public static Account Account(this HttpContextBase context)
+        {
+            var db = TellMeWYSDB.Default(context);
+            var account = db.Accounts.FirstOrDefault(_ => _.UniqueIdInProvider == context.User.Identity.Name);
+            return account;
         }
     }
 }

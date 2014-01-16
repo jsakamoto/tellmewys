@@ -18,6 +18,16 @@ namespace TellMeWYS
                 url: "Channel/List",
                 defaults: new { controller = "Channel", action = "List" }
             );
+            routes.MapRoute(
+                name: "ChannelList_ItemsPartial",
+                url: "Channel/List_ItemsPartial",
+                defaults: new { controller = "Channel", action = "List_ItemsPartial" }
+            );
+            routes.MapRoute(
+                name: "ChannelCreate",
+                url: "Channel/Create",
+                defaults: new { controller = "Channel", action = "Create" }
+            );
 
             routes.MapRoute(
                 name: "Channel",

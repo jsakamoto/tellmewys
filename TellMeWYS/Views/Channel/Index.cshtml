@@ -1,5 +1,10 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model Channel
+@{
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Index</h2>
+<div>
+    @Html.ActionLink("Back to list", "List")
+</div>
+
+<h2>@ViewBag.Title</h2>

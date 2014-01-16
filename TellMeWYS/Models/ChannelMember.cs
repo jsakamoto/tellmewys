@@ -17,9 +17,12 @@ namespace TellMeWYS.Models
 
         public virtual Account Account { get; set; }
 
+        public virtual Channel Channel { get; set; }
+
         public ChannelMember()
         {
             this.Id = Guid.NewGuid();
         }
+
     }
 }

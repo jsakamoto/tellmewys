@@ -226,6 +226,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Channel\List.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -245,12 +246,12 @@
     <Content Include="Views\Account\SignOut.cshtml" />
     <Content Include="Views\Channel\List.cshtml" />
     <Content Include="Views\Channel\Index.cshtml" />
-    <Content Include="Views\Channel\CreateChannel.cshtml" />
     <Content Include="Views\Channel\Settings.cshtml" />
     <Content Include="Views\Channel\EditChannelName.cshtml" />
     <Content Include="Views\Channel\AddMember.cshtml" />
     <Content Include="Views\Channel\EditMember.cshtml" />
     <Content Include="Views\Home\Index_Authenticated.cshtml" />
+    <Content Include="Views\Channel\List_ItemsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

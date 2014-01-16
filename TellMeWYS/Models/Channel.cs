@@ -19,6 +19,8 @@ namespace TellMeWYS.Models
         {
             this.Id = Guid.NewGuid();
             this.ClientPort = Guid.NewGuid();
+            this.Name = "(no title)";
+            this.ChannelMembers = new List<ChannelMember>();
         }
     }
 }

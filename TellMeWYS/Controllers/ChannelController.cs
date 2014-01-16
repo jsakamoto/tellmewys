@@ -24,10 +24,28 @@ namespace TellMeWYS.Controllers
             return View();
         }
 
+        public ActionResult List_ItemsPartial()
+        {
+            var db = this.DB();
+            var account = this.HttpContext.Account();
+            var channels = db.ChannelMembers//.Include("Channels")
+                .Where(_ => _.AccountId == account.Id)
+                .ToArray()
+                .Select(_ => _.Channel);
+            return PartialView(channels);
+        }
+
         [HttpGet]
         public ActionResult Index(Guid id)
         {
-            return View();
+            var db = this.DB();
+            var channel = db.Channels.Find(id);
+            if (channel == null) return HttpNotFound();
+            
+            var account = this.HttpContext.Account();
+            if (channel.ChannelMembers.Any(_ => _.AccountId == account.Id) == false) return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            
+            return View(channel);
         }
 
         [HttpPost]
@@ -45,16 +63,24 @@ namespace TellMeWYS.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult CreateChannel()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult CreateChannel(Channel model)
+        public ActionResult Create()
         {
-            return RedirectToAction("List");
+            if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            
+            var account = this.HttpContext.Account();
+            var newChannel = new Channel();
+            newChannel.ChannelMembers.Add(new ChannelMember
+            {
+                AccountId = account.Id,
+                IsOwner = true
+            });
+
+            var db = this.DB();
+            db.Channels.Add(newChannel);
+            db.SaveChanges();
+
+            return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
 
         public ActionResult Settings(Guid id)
