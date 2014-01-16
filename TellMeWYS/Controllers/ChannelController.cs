@@ -57,11 +57,11 @@ namespace TellMeWYS.Controllers
         {
             // TODO: Enable CORS
 
-            var channelGuid = default(Guid);
-            if (Guid.TryParse(id, out channelGuid) == false) return HttpNotFound();
+            var clientPortGuid = default(Guid);
+            if (Guid.TryParse(id, out clientPortGuid) == false) return HttpNotFound();
 
             var db = this.DB();
-            var channel = db.Channels.Find(channelGuid);
+            var channel = db.Channels.FirstOrDefault(_=>_.ClientPort == clientPortGuid);
             if (channel == null) return HttpNotFound();
 
             var isSafe = false;
