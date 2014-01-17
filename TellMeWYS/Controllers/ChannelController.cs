@@ -10,6 +10,7 @@ using TellMeWYS.Models;
 
 namespace TellMeWYS.Controllers
 {
+    using TellMeWYS.Models.ViewModel;
     using SignalR = Microsoft.AspNet.SignalR;
 
     [Authorize]
@@ -38,15 +39,24 @@ namespace TellMeWYS.Controllers
             return PartialView(channels);
         }
 
-        [HttpGet]
-        public ActionResult Index(Guid id)
+        public ActionResult FindChannel(Guid channelId)
         {
             var db = this.DB();
-            var channel = db.Channels.Find(id);
+            var channel = db.Channels.Find(channelId);
             if (channel == null) return HttpNotFound();
 
             var account = this.HttpContext.Account();
             if (channel.ChannelMembers.Any(_ => _.AccountId == account.Id) == false) return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+
+            return new ModelResult<Channel>(channel);
+        }
+
+        [HttpGet]
+        public ActionResult Index(Guid id)
+        {
+            var result = this.FindChannel(id);
+            if ((result is ModelResult<Channel>) == false) return result;
+            var channel = (result as ModelResult<Channel>).Model;
 
             return View(channel);
         }
@@ -106,7 +116,11 @@ namespace TellMeWYS.Controllers
 
         public ActionResult Settings(Guid id)
         {
-            return View();
+            var result = this.FindChannel(id);
+            if ((result is ModelResult<Channel>) == false) return result;
+            var channel = (result as ModelResult<Channel>).Model;
+
+            return View(channel);
         }
 
         [HttpGet]
@@ -124,12 +138,40 @@ namespace TellMeWYS.Controllers
         [HttpGet]
         public ActionResult AddMember(Guid id)
         {
-            return View();
+            var model = new AddMemberViewModel();
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult AddMember(Guid id, Account model)
+        public ActionResult AddMember(Guid id, AddMemberViewModel model)
         {
+            if (ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
+            var db = this.DB();
+            var account = db.Accounts.FirstOrDefault(_ => _.AccountName == model.Name && _.ProviderName == model.Provider);
+            if (account == null)
+            {
+                account = new Account
+                {
+                    AccountName = model.Name,
+                    ProviderName = model.Provider
+                };
+                db.Accounts.Add(account);
+            }
+            
+            var result = this.FindChannel(id);
+            if (result is ModelResult<Channel> == false) return result;
+            var channel = (result as ModelResult<Channel>).Model;
+
+            channel.ChannelMembers.Add(new ChannelMember { 
+                AccountId = account.Id,
+                IsOwner = model.IsOwner
+            });
+            db.SaveChanges();
+
             return RedirectToAction("Settings", new { id });
         }
 

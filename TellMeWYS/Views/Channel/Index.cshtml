@@ -9,6 +9,10 @@
 
 <h2>@ViewBag.Title</h2>
 
+<div>
+    @Html.ActionLink("Settings", "Settings", new { id = Model.Id.ToString("N") })
+</div>
+
 <div id="log-holder">
 
 </div>

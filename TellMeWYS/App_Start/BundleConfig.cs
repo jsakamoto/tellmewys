@@ -15,6 +15,9 @@ namespace TellMeWYS
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/handlebars").Include(
+                        "~/Scripts/handlebars-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
                         "~/Scripts/jquery.signalR-{version}.js"));
 

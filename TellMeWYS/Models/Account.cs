@@ -18,6 +18,7 @@ namespace TellMeWYS.Models
         public Account()
         {
             this.Id = Guid.NewGuid();
+            this.UniqueIdInProvider = "";
         }
     }
 }

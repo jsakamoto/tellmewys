@@ -1,5 +1,31 @@
-﻿@{
+﻿@model TellMeWYS.Models.ViewModel.AddMemberViewModel
+@{
     ViewBag.Title = "AddMember";
+    var id = this.ViewContext.RouteData.Values["id"];
 }
 
 <h2>AddMember</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label for="Name">Account Name</label>
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+
+        <label for="type">Account Type</label>
+        @Html.DropDownListFor(m => m.Provider, Model.ProviderList)
+
+        <label>Owner</label>
+        @Html.CheckBoxFor(m => m.IsOwner)
+        <label for="IsOwner">Yes</label>
+    </div>
+    <div>
+        <input type="submit" value="OK" />
+        @Html.ActionLink("Cancel", "Settings", new { id })
+    </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,5 +1,52 @@
-﻿@{
-    ViewBag.Title = "Settings";
+﻿@model Channel
+@{
+    ViewBag.Title = Model.Name + " - Settings";
+    var me = this.ViewContext.HttpContext.Account();
 }
 
 <h2>Settings</h2>
+
+<h3>@Model.Name</h3>
+
+<h4>Client Port</h4>
+
+<div>
+    @Model.ClientPort.ToString("N")
+</div>
+
+<h4>Members</h4>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Account Name</th>
+                <th>Account Type</th>
+                <th>Owner</th>
+            </tr>
+        </thead>
+        <tbody id="members-holder">
+            @foreach (var member in Model.ChannelMembers)
+            {
+                <tr data-member-id='@member.Id.ToString("N")'>
+                    <td>@member.Account.AccountName</td>
+                    <td>@member.Account.ProviderName</td>
+                    <td>@(member.IsOwner ? "Yes" : "")</td>
+                    <td>
+                        @if (member.AccountId != me.Id)
+                        {
+                            <a href="#" class="remove">Remove</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Add member", "AddMember", new { id = Model.Id.ToString("N") })
+</div>
+
+@section scripts {
+    <script src="~/Views/Channel/Settings.js"></script>
+}

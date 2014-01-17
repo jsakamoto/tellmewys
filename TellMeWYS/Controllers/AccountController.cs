@@ -62,7 +62,7 @@ namespace TellMeWYS.Controllers
                 ProviderName = result.Provider,
 
                 // terrible hack...
-                AccountName = result.Provider != "github" ? result.UserName : result.ExtraData["login"]
+                AccountName = result.Provider != "github" ? result.ExtraData["email"] : result.ExtraData["login"]
             };
 
             var db = this.DB();
