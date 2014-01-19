@@ -2,11 +2,18 @@
 @{
     ViewBag.Title = Model.Name + " - Settings";
     var me = this.ViewContext.HttpContext.Account();
+    var channelId = Model.Id.ToString("N");
 }
+
+<div>
+    @Html.ActionLink("Back to board", "Index", new { id = channelId })
+</div>
 
 <h2>Settings</h2>
 
-<h3>@Model.Name</h3>
+<h3>Channel Name</h3>
+<div>@Model.Name</div>
+@Html.ActionLink("Edit", "EditChannelName", new { id = channelId })
 
 <h4>Client Port</h4>
 
@@ -47,6 +54,17 @@
     @Html.ActionLink("Add member", "AddMember", new { id = Model.Id.ToString("N") })
 </div>
 
+<div>
+    <h3>Other Actions</h3>
+    <div>
+        @Html.ActionLink("Delete this channel", "Delete", new { id = channelId }, new { id = "btn-delete-channel" })
+    </div>
+</div>
+
 @section scripts {
+    <script>
+        $.app = $.app || {};
+        $.app.channelListUrl = '@Url.Action("List")';
+    </script>
     <script src="~/Views/Channel/Settings.js"></script>
 }

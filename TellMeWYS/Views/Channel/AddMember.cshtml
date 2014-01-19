@@ -1,10 +1,10 @@
 ﻿@model TellMeWYS.Models.ViewModel.AddMemberViewModel
 @{
-    ViewBag.Title = "AddMember";
+    ViewBag.Title = "Add Member";
     var id = this.ViewContext.RouteData.Values["id"];
 }
 
-<h2>AddMember</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm())
 {

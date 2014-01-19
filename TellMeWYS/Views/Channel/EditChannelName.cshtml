@@ -1,5 +1,24 @@
-﻿@{
-    ViewBag.Title = "EditChannelName";
+﻿@model TellMeWYS.Models.Channel
+@{
+    ViewBag.Title = "Edit Channel Name";
+    var id = this.ViewContext.RouteData.Values["id"];
 }
 
-<h2>EditChannelName</h2>
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label for="Name">Channel Name</label>
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div>
+        <input type="submit" value="OK" />
+        @Html.ActionLink("Cancel", "Settings", new { id })
+    </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

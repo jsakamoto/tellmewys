@@ -39,24 +39,12 @@ namespace TellMeWYS.Controllers
             return PartialView(channels);
         }
 
-        public ActionResult FindChannel(Guid channelId)
-        {
-            var db = this.DB();
-            var channel = db.Channels.Find(channelId);
-            if (channel == null) return HttpNotFound();
-
-            var account = this.HttpContext.Account();
-            if (channel.ChannelMembers.Any(_ => _.AccountId == account.Id) == false) return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
-
-            return new ModelResult<Channel>(channel);
-        }
-
         [HttpGet]
         public ActionResult Index(Guid id)
         {
             var result = this.FindChannel(id);
-            if ((result is ModelResult<Channel>) == false) return result;
-            var channel = (result as ModelResult<Channel>).Model;
+            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
+            var channel = result.Channel;
 
             return View(channel);
         }
@@ -71,7 +59,7 @@ namespace TellMeWYS.Controllers
             if (Guid.TryParse(id, out clientPortGuid) == false) return HttpNotFound();
 
             var db = this.DB();
-            var channel = db.Channels.FirstOrDefault(_=>_.ClientPort == clientPortGuid);
+            var channel = db.Channels.FirstOrDefault(_ => _.ClientPort == clientPortGuid);
             if (channel == null) return HttpNotFound();
 
             var isSafe = false;
@@ -117,8 +105,8 @@ namespace TellMeWYS.Controllers
         public ActionResult Settings(Guid id)
         {
             var result = this.FindChannel(id);
-            if ((result is ModelResult<Channel>) == false) return result;
-            var channel = (result as ModelResult<Channel>).Model;
+            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
+            var channel = result.Channel;
 
             return View(channel);
         }
@@ -126,12 +114,25 @@ namespace TellMeWYS.Controllers
         [HttpGet]
         public ActionResult EditChannelName(Guid id)
         {
-            return View();
+            var result = this.FindChannel(id);
+            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
+            var channel = result.Channel;
+
+            return View(channel);
         }
 
         [HttpPost]
         public ActionResult EditChannelName(Guid id, Channel model)
         {
+            if (ModelState.IsValid == false) return View(model);
+
+            var result = this.FindChannel(id);
+            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
+            var channel = result.Channel;
+
+            channel.Name = model.Name;
+            this.DB().SaveChanges();
+
             return RedirectToAction("Settings", new { id });
         }
 
@@ -161,12 +162,13 @@ namespace TellMeWYS.Controllers
                 };
                 db.Accounts.Add(account);
             }
-            
-            var result = this.FindChannel(id);
-            if (result is ModelResult<Channel> == false) return result;
-            var channel = (result as ModelResult<Channel>).Model;
 
-            channel.ChannelMembers.Add(new ChannelMember { 
+            var result = this.FindChannel(id);
+            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
+            var channel = result.Channel;
+
+            channel.ChannelMembers.Add(new ChannelMember
+            {
                 AccountId = account.Id,
                 IsOwner = model.IsOwner
             });
@@ -191,7 +193,53 @@ namespace TellMeWYS.Controllers
         public ActionResult DeleteUser(Guid id, Guid id2)
         {
             if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Guid id)
+        {
+            if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var result = this.FindChannel(id);
+            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
+            var channel = result.Channel;
+            
+            var db = this.DB();
+            channel.ChannelMembers.ToList().ForEach(member => db.ChannelMembers.Remove(member));
+            db.Channels.Remove(channel);
+            db.SaveChanges();
+
+            return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+        }
+
+        private class FindChannelResult
+        {
+            public HttpStatusCode Status { get; protected set; }
+
+            public Channel Channel { get; protected set; }
+
+            public FindChannelResult(HttpStatusCode status, Channel channel = null)
+            {
+                this.Status = status;
+                this.Channel = channel;
+            }
+
+            public ActionResult ToActionResult()
+            {
+                return new HttpStatusCodeResult(this.Status);
+            }
+        }
+
+        private FindChannelResult FindChannel(Guid channelId)
+        {
+            var db = this.DB();
+            var channel = db.Channels.Find(channelId);
+            if (channel == null) return new FindChannelResult(HttpStatusCode.NotFound);
+
+            var account = this.HttpContext.Account();
+            if (channel.ChannelMembers.Any(_ => _.AccountId == account.Id) == false) return new FindChannelResult(HttpStatusCode.Forbidden);
+
+            return new FindChannelResult(HttpStatusCode.OK, channel);
         }
     }
 }
