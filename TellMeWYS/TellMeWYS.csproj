@@ -211,6 +211,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\AppSettings.cs" />
     <Compile Include="Code\Authentication.cs" />
+    <Compile Include="Code\AuthorizeChannelFilter.cs" />
     <Compile Include="Code\IDictionaryExtension.cs" />
     <Compile Include="Code\MicrosoftClientEx.cs" />
     <Compile Include="Code\ModelResult.cs" />

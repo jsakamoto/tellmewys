@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     <div>
         <label for="Name">Channel Name</label>
         @Html.TextBoxFor(m => m.Name)

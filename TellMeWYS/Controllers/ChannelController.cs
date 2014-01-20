@@ -39,13 +39,10 @@ namespace TellMeWYS.Controllers
             return PartialView(channels);
         }
 
-        [HttpGet]
+        [HttpGet, AuthorizeChannel]
         public ActionResult Index(Guid id)
         {
-            var result = this.FindChannel(id);
-            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
-            var channel = result.Channel;
-
+            var channel = this.DB().Channels.Find(id);
             return View(channel);
         }
 
@@ -102,48 +99,40 @@ namespace TellMeWYS.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
 
+        [AuthorizeChannel(OwnerOnly = true)]
         public ActionResult Settings(Guid id)
         {
-            var result = this.FindChannel(id);
-            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
-            var channel = result.Channel;
-
+            var channel = this.DB().Channels.Find(id);
             return View(channel);
         }
 
-        [HttpGet]
+        [HttpGet, AuthorizeChannel(OwnerOnly = true)]
         public ActionResult EditChannelName(Guid id)
         {
-            var result = this.FindChannel(id);
-            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
-            var channel = result.Channel;
-
+            var channel = this.DB().Channels.Find(id);
             return View(channel);
         }
 
-        [HttpPost]
+        [HttpPost, AuthorizeChannel(OwnerOnly = true), ValidateAntiForgeryToken]
         public ActionResult EditChannelName(Guid id, Channel model)
         {
             if (ModelState.IsValid == false) return View(model);
 
-            var result = this.FindChannel(id);
-            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
-            var channel = result.Channel;
-
+            var channel = this.DB().Channels.Find(id);
             channel.Name = model.Name;
             this.DB().SaveChanges();
 
             return RedirectToAction("Settings", new { id });
         }
 
-        [HttpGet]
+        [HttpGet, AuthorizeChannel(OwnerOnly = true)]
         public ActionResult AddMember(Guid id)
         {
             var model = new AddMemberViewModel();
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPost, AuthorizeChannel(OwnerOnly = true)]
         public ActionResult AddMember(Guid id, AddMemberViewModel model)
         {
             if (ModelState.IsValid == false)
@@ -163,10 +152,7 @@ namespace TellMeWYS.Controllers
                 db.Accounts.Add(account);
             }
 
-            var result = this.FindChannel(id);
-            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
-            var channel = result.Channel;
-
+            var channel = this.DB().Channels.Find(id);
             channel.ChannelMembers.Add(new ChannelMember
             {
                 AccountId = account.Id,
@@ -177,25 +163,11 @@ namespace TellMeWYS.Controllers
             return RedirectToAction("Settings", new { id });
         }
 
-        [HttpGet]
-        public ActionResult EditMember(Guid id, Guid id2)
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult EditMember(Guid id, Guid id2, Account model)
-        {
-            return RedirectToAction("Settings", new { id });
-        }
-
-        [HttpPost]
+        [HttpPost, AuthorizeChannel(OwnerOnly = true)]
         public ActionResult RemoveMember(Guid id, Guid memberId)
         {
             if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var result = this.FindChannel(id);
-            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
-            var channel = result.Channel;
+            var channel = this.DB().Channels.Find(id);
 
             var member = channel.ChannelMembers.FirstOrDefault(_ => _.Id == memberId);
             if (member == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
@@ -210,50 +182,18 @@ namespace TellMeWYS.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
 
-        [HttpPost]
+        [HttpPost, AuthorizeChannel(OwnerOnly = true)]
         public ActionResult Delete(Guid id)
         {
             if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var result = this.FindChannel(id);
-            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
-            var channel = result.Channel;
 
             var db = this.DB();
+            var channel = db.Channels.Find(id);
             channel.ChannelMembers.ToList().ForEach(member => db.ChannelMembers.Remove(member));
             db.Channels.Remove(channel);
             db.SaveChanges();
 
             return new HttpStatusCodeResult(HttpStatusCode.NoContent);
-        }
-
-        private class FindChannelResult
-        {
-            public HttpStatusCode Status { get; protected set; }
-
-            public Channel Channel { get; protected set; }
-
-            public FindChannelResult(HttpStatusCode status, Channel channel = null)
-            {
-                this.Status = status;
-                this.Channel = channel;
-            }
-
-            public ActionResult ToActionResult()
-            {
-                return new HttpStatusCodeResult(this.Status);
-            }
-        }
-
-        private FindChannelResult FindChannel(Guid channelId)
-        {
-            var db = this.DB();
-            var channel = db.Channels.Find(channelId);
-            if (channel == null) return new FindChannelResult(HttpStatusCode.NotFound);
-
-            var account = this.HttpContext.Account();
-            if (channel.ChannelMembers.Any(_ => _.AccountId == account.Id) == false) return new FindChannelResult(HttpStatusCode.Forbidden);
-
-            return new FindChannelResult(HttpStatusCode.OK, channel);
         }
     }
 }
