@@ -190,9 +190,23 @@ namespace TellMeWYS.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteUser(Guid id, Guid id2)
+        public ActionResult RemoveMember(Guid id, Guid memberId)
         {
             if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var result = this.FindChannel(id);
+            if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
+            var channel = result.Channel;
+
+            var member = channel.ChannelMembers.FirstOrDefault(_ => _.Id == memberId);
+            if (member == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            // Dont remove myself!
+            if (this.HttpContext.Account().Id == member.AccountId) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var db = this.DB();
+            db.ChannelMembers.Remove(member);
+            db.SaveChanges();
+
             return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
 
@@ -203,7 +217,7 @@ namespace TellMeWYS.Controllers
             var result = this.FindChannel(id);
             if (result.Status != HttpStatusCode.OK) return result.ToActionResult();
             var channel = result.Channel;
-            
+
             var db = this.DB();
             channel.ChannelMembers.ToList().ForEach(member => db.ChannelMembers.Remove(member));
             db.Channels.Remove(channel);

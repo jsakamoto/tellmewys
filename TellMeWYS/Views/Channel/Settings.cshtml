@@ -24,7 +24,7 @@
 <h4>Members</h4>
 
 <div>
-    <table>
+    <table id="members-holder">
         <thead>
             <tr>
                 <th>Account Name</th>
@@ -32,7 +32,7 @@
                 <th>Owner</th>
             </tr>
         </thead>
-        <tbody id="members-holder">
+        <tbody>
             @foreach (var member in Model.ChannelMembers)
             {
                 <tr data-member-id='@member.Id.ToString("N")'>
@@ -42,7 +42,7 @@
                     <td>
                         @if (member.AccountId != me.Id)
                         {
-                            <a href="#" class="remove">Remove</a>
+                            @Html.ActionLink("Remove", "RemoveMember", new { id = channelId }, new { @class = "remove" })
                         }
                     </td>
                 </tr>
