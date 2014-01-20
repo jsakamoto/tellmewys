@@ -10,7 +10,7 @@ namespace TellMeWYS.Models.ViewModel
 {
     public class AddMemberViewModel
     {
-        [Required]
+        [Required, StringLength(200)]
         public string Name { get; set; }
 
         [Required]
