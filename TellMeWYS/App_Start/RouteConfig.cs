@@ -33,6 +33,11 @@ namespace TellMeWYS
                 url: "Channel/Message",
                 defaults: new { controller = "Channel", action = "Message" }
             );
+            routes.MapRoute(
+                name: "ChannelJS",
+                url: "Channel/JS/{clientPort}",
+                defaults: new { controller = "Channel", action = "JS" }
+            );
 
             routes.MapRoute(
                 name: "Channel",

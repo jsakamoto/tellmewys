@@ -73,9 +73,14 @@ namespace TellMeWYS.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult JS(Guid id)
+        public ActionResult JS(string clientPort, string ns)
         {
-            // TODO: return Cached content result.
+            var clientPortGuid = default(Guid);
+            if (Guid.TryParse(clientPort, out clientPortGuid) == false) return HttpNotFound();
+            if (this.DB().Channels.Any(_ => _.ClientPort == clientPortGuid) == false) return HttpNotFound();
+
+            this.ViewBag.ClientPort = clientPort;
+            this.ViewBag.NameSpace = ns ?? "window";
             return View();
         }
 

@@ -1,0 +1,29 @@
+﻿@{
+    this.Response.ContentType = "text/javascript";
+    Layout = null;
+}(function(namespace){
+	namespace.tellMeWYS = namespace.tellMeWYS || {};
+	namespace.tellMeWYS.sendUrl = function() {
+		if (typeof(JSON) === 'undefined') {
+			alert('This browser does not support this feature.');
+			return;
+		}
+		var xhr = null;
+		if (typeof(XDomainRequest) !== 'undefined') {
+			xhr = new XDomainRequest();
+		}
+		else if (typeof(XMLHttpRequest) !== 'undefined') {
+			xhr = new XMLHttpRequest();
+		}
+		else {
+			alert('This browser does not support this feature.');
+			return;
+		}
+		xhr.onerror = function() { alert('Error occurred.'); }
+		xhr.open('POST', location.protocol + '//tellmewys.azurewebsites.net/channel/message');
+		xhr.send(JSON.stringify({
+			'clientPort': '@ViewBag.ClientPort',
+			'url': window.location.href
+		}));
+	};
+})(@ViewBag.NameSpace);

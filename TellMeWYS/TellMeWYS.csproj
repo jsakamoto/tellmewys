@@ -285,6 +285,7 @@
     <Content Include="Views\Channel\EditMember.cshtml" />
     <Content Include="Views\Home\Index_Authenticated.cshtml" />
     <Content Include="Views\Channel\List_ItemsPartial.cshtml" />
+    <Content Include="Views\Channel\JS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
