@@ -49,9 +49,7 @@ namespace TellMeWYS.Controllers
             return View(channel);
         }
 
-        // TODO: Enable CORS
-        [HttpPost]
-        [AllowAnonymous]
+        [AllowAnonymous, EnableCors(methods: "POST")]
         public ActionResult Message()
         {
             var requestBody = default(dynamic);
