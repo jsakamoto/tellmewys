@@ -15,14 +15,7 @@
 <div>@Model.Name</div>
 @Html.ActionLink("Edit", "EditChannelName", new { id = channelId })
 
-<h4>Client Port</h4>
-
-<div>
-    @Model.ClientPort.ToString("N")
-</div>
-
 <h4>Members</h4>
-
 <div>
     <table id="members-holder">
         <thead>
@@ -35,23 +28,51 @@
         <tbody>
             @foreach (var member in Model.ChannelMembers)
             {
-                <tr data-member-id='@member.Id.ToString("N")'>
-                    <td>@member.Account.AccountName</td>
-                    <td>@member.Account.ProviderName</td>
-                    <td>@(member.IsOwner ? "Yes" : "")</td>
-                    <td>
-                        @if (member.AccountId != me.Id)
+            <tr data-member-id='@member.Id.ToString("N")'>
+                <td>@member.Account.AccountName</td>
+                <td>@member.Account.ProviderName</td>
+                <td>@(member.IsOwner ? "Yes" : "")</td>
+                <td>
+                    @if (member.AccountId != me.Id)
                         {
-                            @Html.ActionLink("Remove", "RemoveMember", new { id = channelId }, new { @class = "remove" })
+                        @Html.ActionLink("Remove", "RemoveMember", new { id = channelId }, new { @class = "remove" })
                         }
-                    </td>
-                </tr>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
 </div>
 <div>
     @Html.ActionLink("Add member", "AddMember", new { id = Model.Id.ToString("N") })
+</div>
+
+<h4>Client Port</h4>
+<div>
+    @Model.ClientPort.ToString("N")
+</div>
+
+<h4>JavaScript library</h4>
+<div>
+    @{
+        var urlOfJS = "//" + this.Request.Url.Host + Url.Action("JS", null, new { clientPort = Model.ClientPort.ToString("N") });
+    }
+    <h5>URL</h5>
+    <div>
+        <a href="@urlOfJS" target="_blank">@urlOfJS</a>
+    </div>
+
+    <h5>Example</h5>
+    <div>
+        <p>Include JavaScript into your web site like this:</p>
+        <code>
+            &lt;script src="@urlOfJS"&gt;&lt;/script&gt;
+        </code>
+        <p>Then, you can call follow JavaScript code.</p>
+        <code>
+            window.tellMeWYS.sendUrl();
+        </code>
+    </div>
 </div>
 
 <div>
