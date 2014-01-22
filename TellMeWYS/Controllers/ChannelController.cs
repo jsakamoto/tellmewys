@@ -10,6 +10,9 @@ using TellMeWYS.Models;
 
 namespace TellMeWYS.Controllers
 {
+    using System.IO;
+    using System.Text;
+    using Newtonsoft.Json.Linq;
     using TellMeWYS.Models.ViewModel;
     using SignalR = Microsoft.AspNet.SignalR;
 
@@ -46,14 +49,19 @@ namespace TellMeWYS.Controllers
             return View(channel);
         }
 
+        // TODO: Enable CORS
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Message(string id, string url)
+        public ActionResult Message()
         {
-            // TODO: Enable CORS
+            var requestBody = default(dynamic);
+            using (var sr = new StreamReader(this.Request.InputStream, Encoding.UTF8))
+                requestBody = JObject.Parse(sr.ReadToEnd());
+            var clientPort = (string)requestBody.clientPort;
+            var url = (string)requestBody.url;
 
             var clientPortGuid = default(Guid);
-            if (Guid.TryParse(id, out clientPortGuid) == false) return HttpNotFound();
+            if (Guid.TryParse(clientPort, out clientPortGuid) == false) return HttpNotFound();
 
             var db = this.DB();
             var channel = db.Channels.FirstOrDefault(_ => _.ClientPort == clientPortGuid);
