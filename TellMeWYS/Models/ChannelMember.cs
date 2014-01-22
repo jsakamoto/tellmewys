@@ -15,6 +15,8 @@ namespace TellMeWYS.Models
 
         public bool IsOwner { get; set; }
 
+        public DateTime CreateAt { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Channel Channel { get; set; }
@@ -22,7 +24,7 @@ namespace TellMeWYS.Models
         public ChannelMember()
         {
             this.Id = Guid.NewGuid();
+            this.CreateAt = DateTime.UtcNow;
         }
-
     }
 }

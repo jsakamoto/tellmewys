@@ -15,13 +15,16 @@ namespace TellMeWYS.Models
 
         public Guid ClientPort { get; set; }
 
+        public DateTime CreateAt { get; set; }
+
         public virtual ICollection<ChannelMember> ChannelMembers { get; set; }
 
         public Channel()
         {
             this.Id = Guid.NewGuid();
-            this.ClientPort = Guid.NewGuid();
             this.Name = "(no title)";
+            this.ClientPort = Guid.NewGuid();
+            this.CreateAt = DateTime.UtcNow;
             this.ChannelMembers = new List<ChannelMember>();
         }
     }

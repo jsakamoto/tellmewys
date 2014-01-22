@@ -26,19 +26,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var member in Model.ChannelMembers)
+            @foreach (var member in Model.ChannelMembers.OrderBy(_ => _.CreateAt))
             {
-            <tr data-member-id='@member.Id.ToString("N")'>
-                <td>@member.Account.AccountName</td>
-                <td>@member.Account.ProviderName</td>
-                <td>@(member.IsOwner ? "Yes" : "")</td>
-                <td>
-                    @if (member.AccountId != me.Id)
+                <tr data-member-id='@member.Id.ToString("N")'>
+                    <td>@member.Account.AccountName</td>
+                    <td>@member.Account.ProviderName</td>
+                    <td>@(member.IsOwner ? "Yes" : "")</td>
+                    <td>
+                        @if (member.AccountId != me.Id)
                         {
-                        @Html.ActionLink("Remove", "RemoveMember", new { id = channelId }, new { @class = "remove" })
+                            @Html.ActionLink("Remove", "RemoveMember", new { id = channelId }, new { @class = "remove" })
                         }
-                </td>
-            </tr>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

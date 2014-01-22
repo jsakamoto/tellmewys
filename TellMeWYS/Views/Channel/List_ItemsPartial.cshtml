@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<TellMeWYS.Models.Channel>
-@foreach (var channel in Model)
+@foreach (var channel in Model.OrderBy(_ => _.CreateAt))
 {
     <li>@Html.ActionLink(channel.Name, "Index", new { id = channel.Id.ToString("N") })</li>
 }

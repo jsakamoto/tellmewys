@@ -3,11 +3,13 @@ CREATE TABLE Channels(
 	Id uniqueidentifier NOT NULL,
 	Name nvarchar(50) NOT NULL,
 	ClientPort uniqueidentifier NOT NULL,
+	CreateAt datetime NOT NULL,
 	CONSTRAINT PK_Channels PRIMARY KEY CLUSTERED (Id ASC)
 )
 ALTER TABLE Channels ADD  CONSTRAINT DF_Channels_Id  DEFAULT (newid()) FOR Id
 ALTER TABLE Channels ADD  CONSTRAINT DF_Channels_Name  DEFAULT ('') FOR Name
 ALTER TABLE Channels ADD  CONSTRAINT DF_Channels_ClientPort  DEFAULT (newid()) FOR ClientPort
+ALTER TABLE Channels ADD  CONSTRAINT DF_Channels_CreateAt  DEFAULT (GETDATE()) FOR CreateAt
 GO
 
 -- Accounts
@@ -30,7 +32,9 @@ CREATE TABLE ChannelMembers(
 	ChannelId uniqueidentifier NOT NULL,
 	AccountId uniqueidentifier NOT NULL,
 	IsOwner bit NOT NULL,
+	CreateAt datetime NOT NULL,
 	CONSTRAINT PK_ChannelMembers PRIMARY KEY CLUSTERED (Id ASC)
 )
 ALTER TABLE ChannelMembers ADD  CONSTRAINT DF_ChannelMembers_IsOwner  DEFAULT ((0)) FOR IsOwner
+ALTER TABLE ChannelMembers ADD  CONSTRAINT DF_ChannelMembers_CreateAt DEFAULT (GETDATE()) FOR CreateAt
 GO
