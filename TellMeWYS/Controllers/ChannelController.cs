@@ -161,9 +161,16 @@ namespace TellMeWYS.Controllers
                     ProviderName = model.Provider
                 };
                 db.Accounts.Add(account);
+                db.SaveChanges();
             }
 
             var channel = this.DB().Channels.Find(id);
+            if (channel.ChannelMembers.Any(_ => _.AccountId == account.Id))
+            {
+                ModelState.AddModelError("Name", "This account is already member of this channel.");
+                return View(model);
+            }
+
             channel.ChannelMembers.Add(new ChannelMember
             {
                 AccountId = account.Id,
