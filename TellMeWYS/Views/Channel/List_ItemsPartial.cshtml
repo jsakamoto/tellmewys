@@ -1,5 +1,21 @@
 ﻿@model IEnumerable<TellMeWYS.Models.Channel>
 @foreach (var channel in Model.OrderBy(_ => _.CreateAt))
 {
-    <li>@Html.ActionLink(channel.Name, "Index", new { id = channel.Id.ToString("N") })</li>
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 class="panel-title">
+                    <a href="@Url.Action("Index", new { channel.Id })" class="modern-btn next">
+                        @channel.Name
+                    </a>
+                </h3>
+                <div style="text-align:right">
+                    <a href="@Url.Action("Settings", new { channel.Id })" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        Settings
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 }

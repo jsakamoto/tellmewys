@@ -10,8 +10,7 @@ namespace TellMeWYS.Controllers
     {
         public ActionResult Index()
         {
-            var viewName = this.Request.IsAuthenticated ? "Index_Authenticated" : "Index";
-            return View(viewName);
+            return View();
         }
     }
 }

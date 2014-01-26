@@ -79,7 +79,7 @@ namespace TellMeWYS.Controllers
 
             this.HttpContext.SetAuthCookie(user.UniqueIdInProvider, user.AccountName);
 
-            return Redirect("~/");
+            return RedirectToAction("List", "Channel");
         }
     }
 }

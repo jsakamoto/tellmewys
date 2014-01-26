@@ -4,30 +4,34 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title - @Localize.SiteName</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
 </head>
-<body>
-    <header>
-        @Html.Partial("_LoginPartial")
-    </header>
+<body class="@ViewBag.BodyCssClass">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="">
+        <div class="container">
+            @Html.Partial("_LoginPartial")
+            <div class="navbar-header">
+                <a class="navbar-brand" href="~/">@Localize.SiteName</a>
+            </div>
+        </div>
+    </div>
 
-    <div id="body">
-        @RenderSection("featured", required: false)
+    <div id="body" class="container" style="margin-top:48px">
+
         <section class="content-wrapper main-content clear-fix">
             @RenderBody()
         </section>
+
+        <hr />
+
+        <footer>
+            <p>Powered by ASP.NET SignalR</p>
+        </footer>
     </div>
 
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - @Localize.SiteName</p>
-            </div>
-        </div>
-    </footer>
-
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/js")
     <script>
         $.app = $.app || {};
     </script>

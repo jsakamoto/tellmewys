@@ -3,14 +3,10 @@
     ViewBag.Title = Model.Name;
 }
 
-<div>
-    @Html.ActionLink("Back to list", "List")
-</div>
+<a href="@Url.Action("List")" class="modern-btn nav-back" title="Back to lis."></a>
 
-<h2>@ViewBag.Title</h2>
-
-<div>
-    @Html.ActionLink("Settings", "Settings", new { id = Model.Id.ToString("N") })
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
 </div>
 
 <div id="log-holder">

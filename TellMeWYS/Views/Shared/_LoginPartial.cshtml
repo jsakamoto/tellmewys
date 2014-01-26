@@ -1,17 +1,11 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    <text>
-        Hello, @User.AccountName()
+    <div class="account-box">
+        <div class="account-name">@User.AccountName()</div>
         @using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
         {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Sign out</a>
         }
-    </text>
-}
-else
-{
-    <ul>
-        <li>@Html.ActionLink("Sign in", "SignIn", "Account", null, new { id = "loginLink" })</li>
-    </ul>
+    </div>
 }

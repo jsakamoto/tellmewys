@@ -1,31 +1,56 @@
 ﻿@model TellMeWYS.Models.ViewModel.AddMemberViewModel
 @{
-    ViewBag.Title = "Add Member";
+    ViewBag.Title = "Add Channel Member";
+    ViewBag.BodyCssClass = "add-channel-member immersive";
     var id = this.ViewContext.RouteData.Values["id"];
 }
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
-{
-    <div>
-        <label for="Name">Account Name</label>
-        @Html.TextBoxFor(m => m.Name)
-        @Html.ValidationMessageFor(m => m.Name)
+<div class="well">
+    <form method="post" class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label for="Name" class="control-label col-lg-2">
+                    Account Name
+                </label>
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", autofocus = "" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+            </div>
 
-        <label for="type">Account Type</label>
-        @Html.DropDownListFor(m => m.Provider, Model.ProviderList)
+            <div class="form-group">
+                <label for="type" class="control-label col-lg-2">
+                    Account Type
+                </label>
+                <div class="col-lg-10">
+                    @Html.DropDownListFor(m => m.Provider, Model.ProviderList, new { @class = "form-control" })
+                </div>
+            </div>
 
-        <label>Owner</label>
-        @Html.CheckBoxFor(m => m.IsOwner)
-        <label for="IsOwner">Yes</label>
-    </div>
-    <div>
-        <input type="submit" value="OK" />
-        @Html.ActionLink("Cancel", "Settings", new { id })
-    </div>
-}
-
+            <div class="form-group">
+                <label class="control-label col-lg-2">
+                    Owner
+                </label>
+                <div class="col-lg-10">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.IsOwner)
+                            Yes
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <input type="submit" value="OK" class="btn btn-primary" />
+                    @Html.ActionLink("Cancel", "Settings", new { id }, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

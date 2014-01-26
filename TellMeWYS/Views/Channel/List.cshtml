@@ -1,16 +1,19 @@
 ﻿@{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Your Channels";
 }
 
-<h2>List</h2>
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
 
-<div>
-    <ul id="channel-list">
-    </ul>
+<div class="row" id="channel-list">
 </div>
 
 <div>
-    <a href="#" id="btn-create-channel">Create channel</a>
+    <a href="#" id="btn-create-channel" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-plus"></span>
+        Create channel
+    </a>
 </div>
 
 @section scripts {
