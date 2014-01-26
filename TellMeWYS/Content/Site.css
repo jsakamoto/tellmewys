@@ -58,10 +58,11 @@ input[type="checkbox"].input-validation-error {
         margin-left: -80px;
         float: left;
     }
+
     .modern-btn.next {
-        min-height:48px;
-        line-height:48px;
-        padding-left:54px;
+        min-height: 48px;
+        line-height: 48px;
+        padding-left: 54px;
         background-image: url(images/next.png);
     }
 
@@ -92,6 +93,26 @@ input[type="checkbox"].input-validation-error {
         border-bottom: solid 2px #888;
     }
 
+/* Channel */
+#log-holder > div {
+    margin-bottom: 1em;
+}
+
+#log-holder .time {
+    text-align: right;
+    color: #aaa;
+    font-size: 80%;
+}
+
+#log-holder .waiting-msg {
+    display: none;
+    color: #aaa;
+}
+
+#log-holder.no-msgs .waiting-msg {
+    display: block;
+}
+
 /* account box */
 
 .account-box {
@@ -107,4 +128,10 @@ input[type="checkbox"].input-validation-error {
 /* immersive mode */
 .immersive .account-box {
     display: none;
+}
+
+/* footer */
+footer .powered-by {
+    color: #888;
+    font-size: 90%;
 }

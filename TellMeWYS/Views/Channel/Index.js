@@ -1,28 +1,17 @@
 ﻿$(function () {
+    var logTemplate = Handlebars.compile($('#log-template').html());
 
     var $logHolder = $('#log-holder');
 
     var conn = $.hubConnection();
     var hub = conn.createHubProxy("ChannelHub");
     hub.on('SendUrl', function (url, isSafe) {
-        var $logElem = $('<span>');
-        if (isSafe === true) {
-            var $link = $('<a>').attr({
-                target: '_blank',
-                href: url
-            })
-            .text(url);
-            $logElem.append($link);
-        }
-        else {
-            $logElem.text(url);
-        }
-        var $logBoundary = $('<div>')
-        $logBoundary
-            .append($logElem)
+        var $log = $('<div>')
+            .html(logTemplate({ 'url': url, time: new Date().toLocaleTimeString() }))
             .hide()
-            .appendTo($logHolder)
+            .prependTo($logHolder)
             .fadeIn();
+        $logHolder.removeClass('no-msgs');
     });
 
     conn.start()

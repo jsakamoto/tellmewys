@@ -213,5 +213,16 @@ namespace TellMeWYS.Controllers
 
             return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
+
+        [AuthorizeChannel]
+        public ActionResult TestDrive(Guid id)
+        {
+            var db = this.DB();
+            var channel = db.Channels.Find(id);
+
+            ViewBag.ChannelId = id.ToString("N");
+            ViewBag.ClientPort = channel.ClientPort.ToString("N");
+            return View();
+        }
     }
 }

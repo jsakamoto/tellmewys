@@ -9,15 +9,31 @@
     <h2>@ViewBag.Title</h2>
 </div>
 
-<div id="log-holder">
-
+<div id="log-holder" class="no-msgs">
+    <div class="waiting-msg">
+        Listening messages...
+    </div>
+    <script id="log-template" type="text/x-handlebars">
+        <div>
+            <div class="link"><a target="_blank" href="{{url}}">{{url}}</a></div>
+            <div class="time">{{time}}</div>
+        </div>
+    </script>
 </div>
+
+<hr />
+<a href="@Url.Action("TestDrive")" target="_blank" class="btn btn-default btn-sm">
+    Open Test Drive page
+</a>
+
+
 
 @section scripts {
     <script>
         $.app = $.app || {};
         $.app.channelId = '@Model.Id.ToString("N")';
     </script>
+    @Scripts.Render("~/bundles/handlebars")
     @Scripts.Render("~/bundles/signalr")
     <script src="~/Views/Channel/Index.js"></script>
 }

@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+    var urlOfJS = Url.Action("JS", null, new { clientPort = ViewBag.ClientPort });
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test Drive</title>
+    @Styles.Render("~/Content/css")
+    <style>
+        .msg {
+            color: #40c707;
+        }
+
+        .page-A-now .page-B .msg,
+        .page-A-now .page-A .link,
+        .page-B-now .page-A .msg,
+        .page-B-now .page-B .link {
+            display: none;
+        }
+    </style>
+</head>
+<body class="page-A-now">
+    <div class="container">
+        <section class="content-wrapper main-content clear-fix">
+            <h1>Test Drive Page</h1>
+
+            <h2 class="page-A">
+                <span class="msg">
+                    This is Sample Page A
+                </span>
+                <a href="#pageA" class="link">
+                    Jump to Sample Page A
+                </a>
+            </h2>
+            <h2 class="page-B">
+                <span class="msg">
+                    This is Sample Page B
+                </span>
+                <a href="#pageB" class="link">
+                    Jump to Sample Page B
+                </a>
+            </h2>
+
+            <hr />
+
+            <div>
+                <a id="btn-send-url" href="#" class="btn btn-primary btn-lg btn-block">
+                    &lt;a id=&quot;btn-send-url&quot; href=&quot;#&quot;&gt;
+                    Send URL
+                    &lt;/a&gt;
+                </a>
+            </div>
+
+            <hr />
+
+            <pre id="code">
+
+            </pre>
+
+        </section>
+    </div>
+    @Scripts.Render("~/bundles/js")
+    <script src="@urlOfJS"></script>
+    <script id="send-url-script">
+        $(function () {
+            $('#btn-send-url').click(function (e) {
+                e.preventDefault();
+                tellMeWYS.sendUrl();
+            });
+        })
+    </script>
+    <script>
+        $(function () {
+            $('#code').text($('#send-url-script').html());
+
+            var $body = $('body');
+            var updateUIState = function () {
+                $body.removeClass('page-A-now').removeClass('page-B-now');
+                switch (location.hash) {
+                    case '#pageA':
+                        $body.addClass('page-A-now');
+                        break;
+                    case '#pageB':
+                        $body.addClass('page-B-now');
+                        break;
+                    default:
+                        $body.addClass('page-A-now');
+                        break;
+                }
+            };
+            updateUIState();
+
+            $(window).on('hashchange', updateUIState);
+        });
+    </script>
+</body>
+</html>
