@@ -66,6 +66,33 @@ input[type="checkbox"].input-validation-error {
         background-image: url(images/next.png);
     }
 
+.btn-sign-in {
+    background-repeat: no-repeat;
+    background-image: url(images/next.cw.png);
+    background-position: right center;
+    padding-right: 56px;
+    border-radius: 0px;
+    height: 60px;
+    border-right-width: 10px;
+}
+
+.jumbotron h1 {
+    margin-top:0;
+}
+.jumbotron .title {
+    float: left;
+}
+
+.jumbotron .sign-in {
+    float: right;
+}
+
+    .jumbotron h2 {
+        clear: both;
+    }
+
+
+
 /* Channel Settings */
 .channel-settings h3 {
     margin-top: 1.5em;

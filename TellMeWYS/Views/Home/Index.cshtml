@@ -4,36 +4,56 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>@Localize.SiteName</h1>
-        <p>Tell me "<b>W</b>hat <b>Y</b>ou <b>S</b>eeing?"</p>
-        <p>
-            <a href="@Url.Action("List", "Channel")" class="btn btn-primary btn-lg">
+        <div class="title">
+            <h1>@Localize.SiteName</h1>
+            <p>Tell me "<b>W</b>hat <b>Y</b>ou <b>S</b>eeing?"</p>
+        </div>        <p class="sign-in">
+            <a href="@Url.Action("List", "Channel")" class="btn btn-primary btn-lg btn-sign-in">
                 @if (this.User.Identity.IsAuthenticated)
                 {
-                    <text>Goto Your Channel List &raquo;</text>
+                    <text>Goto Your Channel List</text>
                 }
                 else
                 {
-                    <text>Sign in / Sign up (Free) &raquo;</text>
+                    <text>Sign in / Sign up (Free)</text>
                 }
             </a>
         </p>
+
+        <h2>What's this site?</h2>
+
+        <p>This site aimed at helping telefhone supporter for your web site.</p>
+
+        <p>You can get the URL that your customer on your web site visiting now via this site by customer's action.</p>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h2>Simple</h2>
-            <p>(Contents Here)</p>
+            <h2>Preparation</h2>
+            <ol>
+                <li>Sign in with Microsoft or Google account. (It's Free, No purchase.)</li>
+                <li>Create "Channel", and get the URL of the JavaScript file that provide small function at settings page.</li>
+                <li>Embed the including the JavaScript file that you got at "Channel" setting page into your web site,</li>
+                <li>and handle the click event any UI element (such as "Help Me!" button) and call "window.tellMeWYS.sendUrl()".</li>
+            </ol>
         </div>
         <div class="col-md-4">
-            <h2>Secure</h2>
-            <p>(Contents Here)</p>
+            <h2>Usage</h2>
+            <p>One day, when you recieve the call from your customers to help them...</p>
+            <ol>
+                <li>Sign in this site and open "Channel" page for listen to the messages from your web site.</li>
+                <li>Ask them to click the UI elemet that you wired up the code of calling "sendUrl" method.</li>
+                <li>If your customer click the elemnt, and fire "window.tellMeWYS.sendUrl()", then the URL ot the page that your customer opend now appear at "Channel" page real!</li>
+                <li>You can click the URL on "Channel" page, then open the web page that the same of your customer seeing now.</li>
+            </ol>
         </div>
         <div class="col-md-4">
-            <h2>Free</h2>
-            <p>(Contents Here)</p>
+            <h2>How to try?</h2>
+            <p>At first, sign in this site, and create "Channel".</p>
+            <p>After this, open "Channel" page, then you can see "Open Test Drive Page" link.</p>
+            <p>click "Open Test Drive Page" link to open the test drive page in new tab or window.</p>
         </div>
     </div>
 </div>
