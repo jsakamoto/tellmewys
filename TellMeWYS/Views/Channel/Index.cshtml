@@ -15,7 +15,13 @@
     </div>
     <script id="log-template" type="text/x-handlebars">
         <div>
-            <div class="link"><a target="_blank" href="{{url}}">{{url}}</a></div>
+            <div class="link">
+                {{#if isSafe}}
+                <a target="_blank" href="{{url}}">{{url}}</a>
+                {{else}}
+                    {{url}}
+                {{/if}}
+            </div>
             <div class="time">{{time}}</div>
         </div>
     </script>

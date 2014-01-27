@@ -7,7 +7,7 @@
     var hub = conn.createHubProxy("ChannelHub");
     hub.on('SendUrl', function (url, isSafe) {
         var $log = $('<div>')
-            .html(logTemplate({ 'url': url, time: new Date().toLocaleTimeString() }))
+            .html(logTemplate({ 'url': url, 'isSafe': isSafe, time: new Date().toLocaleTimeString() }))
             .hide()
             .prependTo($logHolder)
             .fadeIn();
