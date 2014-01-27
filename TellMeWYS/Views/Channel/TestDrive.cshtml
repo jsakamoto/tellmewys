@@ -1,6 +1,8 @@
-﻿@{
+﻿@using System.Text.RegularExpressions
+@{
     Layout = null;
-    var urlOfJS = Url.Action("JS", null, new { clientPort = ViewBag.ClientPort });
+    var urlPart = Regex.Replace(this.Request.Url.GetLeftPart(UriPartial.Authority), "^https?:", "");
+    var urlOfJS = urlPart + Url.Action("JS", null, new { clientPort = ViewBag.ClientPort });
 }
 <!DOCTYPE html>
 <html>
@@ -9,8 +11,44 @@
     <title>Test Drive</title>
     @Styles.Render("~/Content/css")
     <style>
-        .msg {
+        .btn-black {
+            color: white;
+            background-color: #444;
+            text-transform: none;
+        }
+
+            .btn-black:hover {
+                background-color: #000;
+            }
+
+        .page-identity {
+            color: #fff;
+            display: inline-block;
+            width: 1.5em;
+            text-align: center;
+            height: 1.5em;
+            line-height: 1.5em;
+        }
+
+        .page-A .page-identity {
+            background-color: darkorange;
+        }
+
+        .page-A .msg {
+            color: darkorange;
+        }
+
+        .page-B .page-identity {
+            background-color: #40c707;
+        }
+
+        .page-B .msg {
             color: #40c707;
+        }
+
+        .link:hover {
+            color: #aaa;
+            background-color: #eee;
         }
 
         .page-A-now .page-B .msg,
@@ -24,29 +62,31 @@
 <body class="page-A-now">
     <div class="container">
         <section class="content-wrapper main-content clear-fix">
-            <h1>Test Drive Page</h1>
+            <div class="page-header">
+                <h1>Test Drive Page</h1>
+            </div>
 
             <h2 class="page-A">
                 <span class="msg">
-                    This is Sample Page A
+                    This is Sample Page <span class="page-identity">A</span>
                 </span>
-                <a href="#pageA" class="link">
-                    Jump to Sample Page A
+                <a href="#pageA" class="link btn btn-default">
+                    Jump to Sample Page <span class="page-identity">A</span> &raquo;
                 </a>
             </h2>
             <h2 class="page-B">
                 <span class="msg">
-                    This is Sample Page B
+                    This is Sample Page <span class="page-identity">B</span>
                 </span>
-                <a href="#pageB" class="link">
-                    Jump to Sample Page B
+                <a href="#pageB" class="link btn btn-default">
+                    Jump to Sample Page <span class="page-identity">B</span> &raquo;
                 </a>
             </h2>
 
             <hr />
 
             <div>
-                <a id="btn-send-url" href="#" class="btn btn-primary btn-lg btn-block">
+                <a id="btn-send-url" href="#" class="btn btn-black btn-lg btn-block">
                     &lt;a id=&quot;btn-send-url&quot; href=&quot;#&quot;&gt;
                     Send URL
                     &lt;/a&gt;
@@ -55,8 +95,7 @@
 
             <hr />
 
-            <pre id="code">
-
+            <pre><span>&lt;script src="@urlOfJS"&gt;&lt;/script&gt;<br />&lt;script&gt;<span id="code"></span>&lt;/script&gt;</span>
             </pre>
 
         </section>
