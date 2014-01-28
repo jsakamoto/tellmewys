@@ -118,48 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Home_Description" xml:space="preserve">
-    <value>What's this site?
+    <value>このサイトは何か?
 -----------------
 
-This site aimed at helping telefhone supporter for your web site.
+このサイトは、あなたのWebサイトにおける電話サポートを支援する目的のものです。
 
-You can get the URL that your customer on your web site visiting now via this site by customer's action.</value>
+あなたのWebサイトに滞在している顧客からの操作によって、このサイトを介して、今その顧客が開いている URL を知ることができるようになります。</value>
   </data>
   <data name="Home_GotoChannelList" xml:space="preserve">
-    <value>Goto Your Channel List</value>
-  </data>
-  <data name="Home_HowToTry" xml:space="preserve">
-    <value>How to try?
------------
-
-At first, sign in this site, and create "Channel".
-
-After this, open "Channel" page, then you can see "Open Test Drive Page" link.
-
-click "Open Test Drive Page" link to open the test drive page in new tab or window.</value>
+    <value>チャンネルリストへ移動</value>
   </data>
   <data name="Home_Preparation" xml:space="preserve">
-    <value>Preparation
+    <value>準備
 -----------
-1. Sign in with Microsoft or Google account. (It's Free, No purchase.)
-2. Create "Channel", and get the URL of the JavaScript file that provide small function at settings page.
-3. Embed the including the JavaScript file that you got at "Channel" setting page into your web site,
-4. and handle the click event any UI element (such as "Help Me!" button) and call "window.tellMeWYS.sendUrl()".</value>
+1. Microsoft または Google アカウントでサインインします。(無料です)
+2. "チャンネル" を作成し, 設定ページから JavaScript ファイルの URL を入手します。
+3. その JavaScript ファイルを読み込むよう、あなたのWebサイトに設置し、,
+4. そして何かのUI要素 (例えば "Help Me!" ボタンのような) のクリックイベントをハンドルして "tellMeWYS.sendUrl()" メソッドを呼び出すようにします。</value>
   </data>
   <data name="Home_SignIn_SignUp" xml:space="preserve">
-    <value>Sign In / Sign Up (Free)</value>
-  </data>
-  <data name="Home_Usage" xml:space="preserve">
-    <value>Usage
------
-One day, when you recieve the call from your customers to help them...
-
-1. Sign in this site and open "Channel" page for listen to the messages from your web site.
-2. Ask them to click the UI elemet that you wired up the code of calling "sendUrl" method.
-3. If your customer click the elemnt, and fire "window.tellMeWYS.sendUrl()", then the URL ot the page that your customer opend now appear at "Channel" page!
-4.You can click the URL on "Channel" page, then open the web page that the same of your customer seeing now.</value>
-  </data>
-  <data name="SiteName" xml:space="preserve">
-    <value>Tell Me WYS</value>
+    <value>サインイン / サインアップ (無料)</value>
   </data>
 </root>

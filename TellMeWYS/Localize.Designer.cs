@@ -61,6 +61,84 @@ namespace TellMeWYS {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What&apos;s this site?
+        ///-----------------
+        ///
+        ///This site aimed at helping telefhone supporter for your web site.
+        ///
+        ///You can get the URL that your customer on your web site visiting now via this site by customer&apos;s action..
+        /// </summary>
+        public static string Home_Description {
+            get {
+                return ResourceManager.GetString("Home_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goto Your Channel List.
+        /// </summary>
+        public static string Home_GotoChannelList {
+            get {
+                return ResourceManager.GetString("Home_GotoChannelList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to try?
+        ///-----------
+        ///
+        ///At first, sign in this site, and create &quot;Channel&quot;.
+        ///
+        ///After this, open &quot;Channel&quot; page, then you can see &quot;Open Test Drive Page&quot; link.
+        ///
+        ///click &quot;Open Test Drive Page&quot; link to open the test drive page in new tab or window..
+        /// </summary>
+        public static string Home_HowToTry {
+            get {
+                return ResourceManager.GetString("Home_HowToTry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preparation
+        ///-----------
+        ///1. Sign in with Microsoft or Google account. (It&apos;s Free, No purchase.)
+        ///2. Create &quot;Channel&quot;, and get the URL of the JavaScript file that provide small function at settings page.
+        ///3. Embed the including the JavaScript file that you got at &quot;Channel&quot; setting page into your web site,
+        ///4. and handle the click event any UI element (such as &quot;Help Me!&quot; button) and call &quot;window.tellMeWYS.sendUrl()&quot;..
+        /// </summary>
+        public static string Home_Preparation {
+            get {
+                return ResourceManager.GetString("Home_Preparation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign In / Sign Up (Free).
+        /// </summary>
+        public static string Home_SignIn_SignUp {
+            get {
+                return ResourceManager.GetString("Home_SignIn_SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage
+        ///-----
+        ///One day, when you recieve the call from your customers to help them...
+        ///
+        ///1. Sign in this site and open &quot;Channel&quot; page for listen to the messages from your web site.
+        ///2. Ask them to click the UI elemet that you wired up the code of calling &quot;sendUrl&quot; method.
+        ///3. If your customer click the elemnt, and fire &quot;window.tellMeWYS.sendUrl()&quot;, then the URL ot the page that your customer opend now appear at &quot;Channel&quot; page!
+        ///4.You can click the URL on &quot;Channel&quot; page, then open the web page that the same o [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Home_Usage {
+            get {
+                return ResourceManager.GetString("Home_Usage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tell Me WYS.
         /// </summary>
         public static string SiteName {
