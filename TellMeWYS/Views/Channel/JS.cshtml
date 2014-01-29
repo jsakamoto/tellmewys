@@ -1,9 +1,10 @@
 ﻿@{
     this.Response.ContentType = "text/javascript";
+    var urlPart = System.Text.RegularExpressions.Regex.Replace(this.Request.Url.GetLeftPart(UriPartial.Authority), "^https?:", "");
     Layout = null;
 }(function(n,a,w,l,j,t,x){j=w.JSON;(n.tellMeWYS=n.tellMeWYS||{}).sendUrl=function(){
 t=w.XDomainRequest||w.XMLHttpRequest;if((j&&t)==null)a('This browser does not support this feature.');
 else{x=new t;x.onerror=function(){a('Error occurred.')}
-x.open('POST',l.protocol+'//tellmewys.azurewebsites.net/channel/message');
-x.send(j.stringify({clientPort:'@ViewBag.ClientPort',url:l.href}));
-}}})(@ViewBag.NameSpace,alert,window,location);
+x.open('POST',l.protocol+'@(urlPart)/channel/message');
+x.send(j.stringify({clientPort:'@(ViewBag.ClientPort)',url:l.href}));
+}}})(@(ViewBag.NameSpace),alert,window,location);
