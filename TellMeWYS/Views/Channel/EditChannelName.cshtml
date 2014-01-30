@@ -1,6 +1,6 @@
 ﻿@model TellMeWYS.Models.Channel
 @{
-    ViewBag.Title = "Edit Channel Name";
+    ViewBag.Title = Localize.EditChannelName;
     ViewBag.BodyCssClass = "edit-channel-name immersive";
     var id = this.ViewContext.RouteData.Values["id"];
 }
@@ -13,7 +13,7 @@
             @Html.AntiForgeryToken()
             <div class="form-group">
                 <label for="Name" class="control-label col-lg-2">
-                    Channel Name
+                    @Localize.ChannelName
                 </label>
                 <div class="col-lg-10">
                     @Html.TextBoxFor(m => m.Name, new { @class = "form-control", autofocus = "" })
@@ -22,7 +22,7 @@
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <input type="submit" value="OK" class="btn btn-primary" />
-                    @Html.ActionLink("Cancel", "Settings", new { id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink(Localize.Cancel, "Settings", new { id }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </fieldset>

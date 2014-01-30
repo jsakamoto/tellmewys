@@ -4,7 +4,7 @@
 
     $('.remove', membersHolder).click(function (e) {
         e.preventDefault();
-        if (confirm('Sure?') === false) return;
+        if (confirm($.Localize.Sure) === false) return;
         var $this = $(this);
         var $row = $this.closest('tr');
         var memberId = $row.data("member-id");
@@ -22,7 +22,7 @@
 
     $('#btn-delete-channel').click(function (e) {
         e.preventDefault();
-        if (confirm('Sure?') === false) return;
+        if (confirm($.Localize.Sure) === false) return;
         $.post($(this).attr('href'))
             .done(function () {
                 location.href = $.app.channelListUrl;

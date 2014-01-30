@@ -7,7 +7,7 @@
 
     $('#btn-create-channel').click(function (e) {
         e.preventDefault();
-        if (confirm('Sure?') === false) return;
+        if (confirm($.Localize.Sure) === false) return;
         $.post('/Channel/Create')
         .done(function () {
             updateList();

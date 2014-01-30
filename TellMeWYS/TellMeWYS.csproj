@@ -318,7 +318,6 @@
     <EmbeddedResource Include="Localize.ja.resx" />
     <EmbeddedResource Include="Localize.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localize.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

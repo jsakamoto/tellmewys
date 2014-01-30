@@ -243,4 +243,10 @@
   <data name="ThisIsSamplePage" xml:space="preserve">
     <value>これはサンプルページ {0} です</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Sure" xml:space="preserve">
+    <value>よろしいですか?</value>
+  </data>
 </root>

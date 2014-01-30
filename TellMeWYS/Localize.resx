@@ -246,4 +246,10 @@ One day, when you recieve the call from your customers to help them...
   <data name="ThisIsSamplePage" xml:space="preserve">
     <value>This is sample page {0}</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Sure" xml:space="preserve">
+    <value>Sure?</value>
+  </data>
 </root>

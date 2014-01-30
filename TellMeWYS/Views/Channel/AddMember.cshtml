@@ -1,6 +1,6 @@
 ﻿@model TellMeWYS.Models.ViewModel.AddMemberViewModel
 @{
-    ViewBag.Title = "Add Channel Member";
+    ViewBag.Title = Localize.AddMember;
     ViewBag.BodyCssClass = "add-channel-member immersive";
     var id = this.ViewContext.RouteData.Values["id"];
 }
@@ -12,7 +12,7 @@
         <fieldset>
             <div class="form-group">
                 <label for="Name" class="control-label col-lg-2">
-                    Account Name
+                    @Localize.AccountName
                 </label>
                 <div class="col-lg-10">
                     @Html.TextBoxFor(m => m.Name, new { @class = "form-control", autofocus = "" })
@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <label for="type" class="control-label col-lg-2">
-                    Account Type
+                    @Localize.AccountType
                 </label>
                 <div class="col-lg-10">
                     @Html.DropDownListFor(m => m.Provider, Model.ProviderList, new { @class = "form-control" })
@@ -31,7 +31,7 @@
 
             <div class="form-group">
                 <label class="control-label col-lg-2">
-                    Owner
+                    @Localize.Owner
                 </label>
                 <div class="col-lg-10">
                     <div class="checkbox">
@@ -45,7 +45,7 @@
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <input type="submit" value="OK" class="btn btn-primary" />
-                    @Html.ActionLink("Cancel", "Settings", new { id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink(Localize.Cancel, "Settings", new { id }, new { @class = "btn btn-default" })
                 </div>
             </div>
         </fieldset>
