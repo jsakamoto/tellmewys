@@ -1,7 +1,13 @@
 ﻿@{
     ViewBag.Title = Localize.YourChannels;
 }
-
+@section head {
+    <style>
+        .settings.member {
+            visibility: hidden;
+        }
+    </style>
+}
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>

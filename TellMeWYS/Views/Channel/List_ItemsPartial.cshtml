@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<TellMeWYS.Models.Channel>
 @foreach (var channel in Model.OrderBy(_ => _.CreateAt))
 {
+    var isOwner = channel.ChannelMembers.First(_ => _.AccountId == this.Context.Account().Id).IsOwner;
     <div class="col-sm-4">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -9,7 +10,7 @@
                         @channel.Name
                     </a>
                 </h3>
-                <div style="text-align:right">
+                <div style="text-align:right" class="settings @(isOwner ? "owner" : "member")">
                     <a href="@Url.Action("Settings", new { id = channel.Id.ToString("N") })" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-cog"></span>
                         @Localize.Settings
