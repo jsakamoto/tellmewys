@@ -1,33 +1,33 @@
 ﻿@model Channel
 @{
-    ViewBag.Title = Model.Name + " - Settings";
+    ViewBag.Title = Model.Name + " - " + Localize.Settings;
     ViewBag.BodyCssClass = "channel-settings";
     var me = this.ViewContext.HttpContext.Account();
     var channelId = Model.Id.ToString("N");
 }
 
-<a href="@Url.Action("List")" class="modern-btn nav-back" title="Back to lis."></a>
+<a href="@Url.Action("List")" class="modern-btn nav-back" title="@Localize.BackToList"></a>
 
 <div class="page-header">
-    <h2>Settings</h2>
+    <h2>@Localize.Settings</h2>
 </div>
 
-<h3>Channel Name</h3>
+<h3>@Localize.ChannelName</h3>
 <div class="channel-name">
     @Model.Name
-    <a href="@Url.Action("EditChannelName", new { id = channelId })" title="Edit channel name." class="btn btn-default btn-sm ">
+    <a href="@Url.Action("EditChannelName", new { id = channelId })" title="@Localize.EditChannelName" class="btn btn-default btn-sm ">
         <span class="glyphicon glyphicon-pencil"></span>
     </a>
 </div>
 
-<h3>Members</h3>
+<h3>@Localize.Members</h3>
 <div>
     <table id="members-holder">
         <thead>
             <tr>
-                <th>Account Name</th>
-                <th>Account Type</th>
-                <th>Owner</th>
+                <th>@Localize.AccountName</th>
+                <th>@Localize.AccountType</th>
+                <th>@Localize.Owner</th>
                 <th></th>
             </tr>
         </thead>
@@ -41,7 +41,7 @@
                     <td>
                         @if (member.AccountId != me.Id)
                         {
-                            <a href="@Url.Action("RemoveMember", new { id = channelId })" class="btn btn-default btn-xs remove" title="Remove member">
+                            <a href="@Url.Action("RemoveMember", new { id = channelId })" class="btn btn-default btn-xs remove" title="@Localize.RemoveMember">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         }
@@ -54,12 +54,12 @@
 <div>
     <a href="@Url.Action("AddMember", new { id = channelId })" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-plus-sign"></span>
-        Add member
+        @Localize.AddMember
     </a>
 </div>
 
 
-<h3>JavaScript library</h3>
+<h3>@Localize.JavaScriptLibrary</h3>
 <div>
     @{
         var urlOfJS = "//" + this.Request.Url.Host + Url.Action("JS", null, new { clientPort = Model.ClientPort.ToString("N") });
@@ -69,30 +69,30 @@
         <a href="@urlOfJS" target="_blank">@urlOfJS</a>
     </div>
 
-    <h5>Example</h5>
+    <h5>@Localize.Example</h5>
     <div>
-        <p>Include JavaScript into your web site like this:</p>
+        <p>@Localize.JS_Example_IncludeJavaScriptLikeThis</p>
         <code>
             &lt;script src="@urlOfJS"&gt;&lt;/script&gt;
         </code>
-        <p>Then, you can call follow JavaScript code.</p>
+        <p>@Localize.JS_Example_Call</p>
         <code>
             window.tellMeWYS.sendUrl();
         </code>
     </div>
 </div>
 
-<h4>Client Port</h4>
+<h4>@Localize.ClientPort</h4>
 <div>
     @Model.ClientPort.ToString("N")
 </div>
 
 <div>
-    <h3>Other Actions</h3>
+    <h3>@Localize.OtherActions</h3>
     <div>
         <a id="btn-delete-channel" href="@Url.Action("Delete", new { id = channelId })" class="btn btn-danger btn-sm">
             <span class="glyphicon glyphicon-exclamation-sign"></span>
-            Delete this channel
+            @Localize.DeleteThisChannel
         </a>
     </div>
 </div>

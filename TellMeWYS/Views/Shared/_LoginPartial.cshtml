@@ -5,7 +5,9 @@
         @using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
         {
             @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Sign out</a>
+            <a href="javascript:document.getElementById('logoutForm').submit()">
+                @Localize.SignOut
+            </a>
         }
     </div>
 }

@@ -117,6 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountName" xml:space="preserve">
+    <value>アカウント名</value>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>アカウント種別</value>
+  </data>
+  <data name="AddMember" xml:space="preserve">
+    <value>メンバーの追加</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>リストに戻る</value>
+  </data>
+  <data name="ChannelName" xml:space="preserve">
+    <value>チャンネル名</value>
+  </data>
+  <data name="ClientPort" xml:space="preserve">
+    <value>クライアントポート番号</value>
+  </data>
+  <data name="CreateChannel" xml:space="preserve">
+    <value>チャンネルを作成</value>
+  </data>
+  <data name="DeleteThisChannel" xml:space="preserve">
+    <value>このチャンネルを削除</value>
+  </data>
+  <data name="EditChannelName" xml:space="preserve">
+    <value>チャンネル名の変更</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>例</value>
+  </data>
   <data name="Home_Description" xml:space="preserve">
     <value>このサイトは何か?
 -----------------
@@ -138,5 +168,44 @@
   </data>
   <data name="Home_SignIn_SignUp" xml:space="preserve">
     <value>サインイン / サインアップ (無料)</value>
+  </data>
+  <data name="JavaScriptLibrary" xml:space="preserve">
+    <value>JavaScript ライブラリ</value>
+  </data>
+  <data name="JS_Example_Call" xml:space="preserve">
+    <value>そうすると、次の JavaScript コードを呼び出すことができます。</value>
+  </data>
+  <data name="JS_Example_IncludeJavaScriptLikeThis" xml:space="preserve">
+    <value>以下のように JavaScript を読み込みます:</value>
+  </data>
+  <data name="ListeningMessages" xml:space="preserve">
+    <value>メッセージを待機中...</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>メンバー</value>
+  </data>
+  <data name="OpenTestDrivePage" xml:space="preserve">
+    <value>テストページを開く</value>
+  </data>
+  <data name="OtherActions" xml:space="preserve">
+    <value>その他の操作</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>オーナー</value>
+  </data>
+  <data name="RemoveMember" xml:space="preserve">
+    <value>メンバーを削除</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>サインイン</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>サインアウト</value>
+  </data>
+  <data name="YourChannels" xml:space="preserve">
+    <value>チャンネルリスト</value>
   </data>
 </root>

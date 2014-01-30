@@ -61,6 +61,96 @@ namespace TellMeWYS {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Name.
+        /// </summary>
+        public static string AccountName {
+            get {
+                return ResourceManager.GetString("AccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Type.
+        /// </summary>
+        public static string AccountType {
+            get {
+                return ResourceManager.GetString("AccountType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add member.
+        /// </summary>
+        public static string AddMember {
+            get {
+                return ResourceManager.GetString("AddMember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to list.
+        /// </summary>
+        public static string BackToList {
+            get {
+                return ResourceManager.GetString("BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Channel Name.
+        /// </summary>
+        public static string ChannelName {
+            get {
+                return ResourceManager.GetString("ChannelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Port.
+        /// </summary>
+        public static string ClientPort {
+            get {
+                return ResourceManager.GetString("ClientPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Channel.
+        /// </summary>
+        public static string CreateChannel {
+            get {
+                return ResourceManager.GetString("CreateChannel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete this channel.
+        /// </summary>
+        public static string DeleteThisChannel {
+            get {
+                return ResourceManager.GetString("DeleteThisChannel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit channel name.
+        /// </summary>
+        public static string EditChannelName {
+            get {
+                return ResourceManager.GetString("EditChannelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example.
+        /// </summary>
+        public static string Example {
+            get {
+                return ResourceManager.GetString("Example", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What&apos;s this site?
         ///-----------------
         ///
@@ -139,11 +229,128 @@ namespace TellMeWYS {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to JavaScript Library.
+        /// </summary>
+        public static string JavaScriptLibrary {
+            get {
+                return ResourceManager.GetString("JavaScriptLibrary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Then, you can call follow JavaScript code..
+        /// </summary>
+        public static string JS_Example_Call {
+            get {
+                return ResourceManager.GetString("JS_Example_Call", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include JavaScript into your web site like this:.
+        /// </summary>
+        public static string JS_Example_IncludeJavaScriptLikeThis {
+            get {
+                return ResourceManager.GetString("JS_Example_IncludeJavaScriptLikeThis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listening messages....
+        /// </summary>
+        public static string ListeningMessages {
+            get {
+                return ResourceManager.GetString("ListeningMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Members.
+        /// </summary>
+        public static string Members {
+            get {
+                return ResourceManager.GetString("Members", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Test Drive page.
+        /// </summary>
+        public static string OpenTestDrivePage {
+            get {
+                return ResourceManager.GetString("OpenTestDrivePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other actions.
+        /// </summary>
+        public static string OtherActions {
+            get {
+                return ResourceManager.GetString("OtherActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owner.
+        /// </summary>
+        public static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove member.
+        /// </summary>
+        public static string RemoveMember {
+            get {
+                return ResourceManager.GetString("RemoveMember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign in.
+        /// </summary>
+        public static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign out.
+        /// </summary>
+        public static string SignOut {
+            get {
+                return ResourceManager.GetString("SignOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tell Me WYS.
         /// </summary>
         public static string SiteName {
             get {
                 return ResourceManager.GetString("SiteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Channels.
+        /// </summary>
+        public static string YourChannels {
+            get {
+                return ResourceManager.GetString("YourChannels", resourceCulture);
             }
         }
     }
