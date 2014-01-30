@@ -208,4 +208,39 @@
   <data name="YourChannels" xml:space="preserve">
     <value>チャンネルリスト</value>
   </data>
+  <data name="Home_HowToTry" xml:space="preserve">
+    <value>試すには?
+-----------
+
+まずこのサイトにサインインし、"チャンネル" を作成します。
+
+そして "チャンネル" ページを開くと、「テストページを開く」リンクがあります。
+
+「テストページを開く」リンクをクリックして、テストページを別のタブまたはウィンドウに開いてください。</value>
+  </data>
+  <data name="Home_Usage" xml:space="preserve">
+    <value>使い方
+-----
+ユーザーからサポート依頼の電話がかかってきたら...
+
+1. このサイトにサインインし、"チャンネル" ページを開いて URL のメッセージを受信待機します。
+2. ユーザーに、あらかじめ "sendUrl" メソッド呼び出しを仕掛けておいた UI 要素をクリックしてもらうよう伝えます。
+3. ユーザーがそのUI要素をクリックして、 "window.tellMeWYS.sendUrl()" が呼び出されると、**そのユーザーが今開いているページの URL が、"チャンネル" ページに現れます!**
+4. "チャンネル" ページに現れた URLをクリックすれば、ユーザーが現在開いているのと同じページを開くことができます。</value>
+  </data>
+  <data name="JumpToSamplePage" xml:space="preserve">
+    <value>サンプルページ {0} に移動</value>
+  </data>
+  <data name="NoTitle" xml:space="preserve">
+    <value>(無題)</value>
+  </data>
+  <data name="SendURL" xml:space="preserve">
+    <value>URL を送信</value>
+  </data>
+  <data name="TestDrivePage" xml:space="preserve">
+    <value>テストページ</value>
+  </data>
+  <data name="ThisIsSamplePage" xml:space="preserve">
+    <value>これはサンプルページ {0} です</value>
+  </data>
 </root>

@@ -3,12 +3,14 @@
     Layout = null;
     var urlPart = Regex.Replace(this.Request.Url.GetLeftPart(UriPartial.Authority), "^https?:", "");
     var urlOfJS = urlPart + Url.Action("JS", null, new { clientPort = ViewBag.ClientPort });
+    var title = Localize.TestDrivePage;
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Test Drive</title>
+    <title>@title</title>
+    <link href="~/Views/Channel/TestDrive.favicon.png" rel="icon" type="image/png" />
     @Styles.Render("~/Content/css")
     <style>
         .btn-black {
@@ -63,23 +65,23 @@
     <div class="container">
         <section class="content-wrapper main-content clear-fix">
             <div class="page-header">
-                <h1>Test Drive Page</h1>
+                <h1>@title</h1>
             </div>
 
             <h2 class="page-A">
                 <span class="msg">
-                    This is Sample Page <span class="page-identity">A</span>
+                    @Html.Raw(string.Format(Localize.ThisIsSamplePage, "<span class='page-identity'>A</span>"))
                 </span>
                 <a href="#pageA" class="link btn btn-default">
-                    Jump to Sample Page <span class="page-identity">A</span> &raquo;
+                    @Html.Raw(string.Format(Localize.JumpToSamplePage, "<span class='page-identity'>A</span>")) &raquo;
                 </a>
             </h2>
             <h2 class="page-B">
                 <span class="msg">
-                    This is Sample Page <span class="page-identity">B</span>
+                    @Html.Raw(string.Format(Localize.ThisIsSamplePage, "<span class='page-identity'>B</span>"))
                 </span>
                 <a href="#pageB" class="link btn btn-default">
-                    Jump to Sample Page <span class="page-identity">B</span> &raquo;
+                    @Html.Raw(string.Format(Localize.JumpToSamplePage, "<span class='page-identity'>B</span>")) &raquo;
                 </a>
             </h2>
 
@@ -88,7 +90,7 @@
             <div>
                 <a id="btn-send-url" href="#" class="btn btn-black btn-lg btn-block">
                     &lt;a id=&quot;btn-send-url&quot; href=&quot;#&quot;&gt;
-                    Send URL
+                    @Localize.SendURL
                     &lt;/a&gt;
                 </a>
             </div>

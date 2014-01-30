@@ -96,7 +96,9 @@ namespace TellMeWYS.Controllers
             if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var account = this.HttpContext.Account();
-            var newChannel = new Channel();
+            var newChannel = new Channel { 
+                Name = Localize.NoTitle
+            };
             newChannel.ChannelMembers.Add(new ChannelMember
             {
                 AccountId = account.Id,

@@ -218,7 +218,6 @@
     <Compile Include="Code\EnableCorsAttribute.cs" />
     <Compile Include="Code\IDictionaryExtension.cs" />
     <Compile Include="Code\MicrosoftClientEx.cs" />
-    <Compile Include="Code\ModelResult.cs" />
     <Compile Include="Code\StringExtension.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChannelController.cs" />
@@ -280,6 +279,7 @@
     <Content Include="Views\Channel\Settings.js" />
     <Content Include="Views\Channel\Index.js" />
     <Content Include="Views\Channel\List.js" />
+    <Content Include="Views\Channel\TestDrive.favicon.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -296,7 +296,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Account\SignIn.cshtml" />
-    <Content Include="Views\Account\SignOut.cshtml" />
     <Content Include="Views\Channel\List.cshtml" />
     <Content Include="Views\Channel\Index.cshtml" />
     <Content Include="Views\Channel\Settings.cshtml" />
@@ -310,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -256,6 +256,15 @@ namespace TellMeWYS {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jump to sample page {0}.
+        /// </summary>
+        public static string JumpToSamplePage {
+            get {
+                return ResourceManager.GetString("JumpToSamplePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Listening messages....
         /// </summary>
         public static string ListeningMessages {
@@ -270,6 +279,15 @@ namespace TellMeWYS {
         public static string Members {
             get {
                 return ResourceManager.GetString("Members", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (No Title).
+        /// </summary>
+        public static string NoTitle {
+            get {
+                return ResourceManager.GetString("NoTitle", resourceCulture);
             }
         }
         
@@ -310,6 +328,15 @@ namespace TellMeWYS {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send URL.
+        /// </summary>
+        public static string SendURL {
+            get {
+                return ResourceManager.GetString("SendURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
@@ -342,6 +369,24 @@ namespace TellMeWYS {
         public static string SiteName {
             get {
                 return ResourceManager.GetString("SiteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test Drive Page.
+        /// </summary>
+        public static string TestDrivePage {
+            get {
+                return ResourceManager.GetString("TestDrivePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is sample page {0}.
+        /// </summary>
+        public static string ThisIsSamplePage {
+            get {
+                return ResourceManager.GetString("ThisIsSamplePage", resourceCulture);
             }
         }
         

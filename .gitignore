@@ -4,3 +4,4 @@ bin/
 obj/
 /packages
 /custom.appSettings.config
+/TellMeWYS/Properties/PublishProfiles/*.pubxml

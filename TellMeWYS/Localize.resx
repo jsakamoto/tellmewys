@@ -231,4 +231,19 @@ One day, when you recieve the call from your customers to help them...
   <data name="YourChannels" xml:space="preserve">
     <value>Your Channels</value>
   </data>
+  <data name="JumpToSamplePage" xml:space="preserve">
+    <value>Jump to sample page {0}</value>
+  </data>
+  <data name="NoTitle" xml:space="preserve">
+    <value>(No Title)</value>
+  </data>
+  <data name="SendURL" xml:space="preserve">
+    <value>Send URL</value>
+  </data>
+  <data name="TestDrivePage" xml:space="preserve">
+    <value>Test Drive Page</value>
+  </data>
+  <data name="ThisIsSamplePage" xml:space="preserve">
+    <value>This is sample page {0}</value>
+  </data>
 </root>
