@@ -238,6 +238,7 @@
     <Compile Include="Models\ChannelMember.cs" />
     <Compile Include="Models\TellMeWYSDB.cs" />
     <Compile Include="Models\ViewModel\AddMemberViewModel.cs" />
+    <Compile Include="Models\ViewModel\ChannelItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -303,7 +304,6 @@
     <Content Include="Views\Channel\AddMember.cshtml" />
     <Content Include="Views\Channel\EditMember.cshtml" />
     <Content Include="Views\Home\Index_Authenticated.cshtml" />
-    <Content Include="Views\Channel\List_ItemsPartial.cshtml" />
     <Content Include="Views\Channel\JS.cshtml" />
     <Content Include="Views\Channel\TestDrive.cshtml" />
   </ItemGroup>

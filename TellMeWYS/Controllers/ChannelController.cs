@@ -28,18 +28,14 @@ namespace TellMeWYS.Controllers
 
         public ActionResult List()
         {
-            return View();
-        }
-
-        public ActionResult List_ItemsPartial()
-        {
             var db = this.DB();
             var account = this.HttpContext.Account();
             var channels = db.ChannelMembers//.Include("Channels")
                 .Where(_ => _.AccountId == account.Id)
+                .OrderBy(_ => _.CreateAt)
                 .ToArray()
                 .Select(_ => _.Channel);
-            return PartialView(channels);
+            return View(channels);
         }
 
         [HttpGet, AuthorizeChannel]
@@ -96,9 +92,7 @@ namespace TellMeWYS.Controllers
             if (this.Request.IsAjaxRequest() == false) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var account = this.HttpContext.Account();
-            var newChannel = new Channel { 
-                Name = Localize.NoTitle
-            };
+            var newChannel = new Channel { Name = Localize.NoTitle };
             newChannel.ChannelMembers.Add(new ChannelMember
             {
                 AccountId = account.Id,
@@ -109,7 +103,7 @@ namespace TellMeWYS.Controllers
             db.Channels.Add(newChannel);
             db.SaveChanges();
 
-            return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+            return Json(new ChannelItemViewModel(newChannel, Url, account));
         }
 
         [AuthorizeChannel(OwnerOnly = true)]

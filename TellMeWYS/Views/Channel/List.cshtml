@@ -1,5 +1,8 @@
-﻿@{
+﻿@model IEnumerable<TellMeWYS.Models.Channel>
+@{
     ViewBag.Title = Localize.YourChannels;
+    var account = this.ViewContext.HttpContext.Account();
+    var channels = Model.Select(_ => new ChannelItemViewModel(_, Url, account));
 }
 @section head {
     <style>
@@ -13,6 +16,25 @@
 </div>
 
 <div class="row" id="channel-list">
+    <script type="text/x-handlebars" id="channel-item-template">
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class="panel-title">
+                        <a href="{{channelUrl}}" class="modern-btn next">
+                            {{name}}
+                        </a>
+                    </h3>
+                    <div style="text-align:right" class="settings {{#if isOwner}}owner{{else}}member{{/if}}">
+                        <a href="{{settingsUrl}}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            @Localize.Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
 </div>
 
 <div>
@@ -23,5 +45,10 @@
 </div>
 
 @section scripts {
+    @Scripts.Render("~/bundles/handlebars")
+    <script>
+        $.app = $.app || {};
+        $.app.channels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(channels));
+    </script>
     <script src="~/Views/Channel/List.js"></script>
 }

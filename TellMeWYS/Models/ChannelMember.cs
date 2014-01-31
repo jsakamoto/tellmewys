@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace TellMeWYS.Models
 {
@@ -19,6 +20,7 @@ namespace TellMeWYS.Models
 
         public virtual Account Account { get; set; }
 
+        [JsonIgnore]
         public virtual Channel Channel { get; set; }
 
         public ChannelMember()
