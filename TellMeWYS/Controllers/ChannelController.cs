@@ -215,10 +215,7 @@ namespace TellMeWYS.Controllers
         {
             var db = this.DB();
             var channel = db.Channels.Find(id);
-
-            ViewBag.ChannelId = id.ToString("N");
-            ViewBag.ClientPort = channel.ClientPort.ToString("N");
-            return View();
+            return View(channel);
         }
     }
 }

@@ -1,5 +1,9 @@
-﻿@model System.Collections.Generic.ICollection<Microsoft.Web.WebPages.OAuth.AuthenticationClientData>
+﻿@using System.Configuration
+@using System.Web.Configuration
+@model System.Collections.Generic.ICollection<Microsoft.Web.WebPages.OAuth.AuthenticationClientData>
 @{
+    var compilationSection = ConfigurationManager.GetSection("system.web/compilation") as CompilationSection;
+    var isDebug = compilationSection.Debug;
     ViewBag.Title = Localize.SignIn;
 }
 
@@ -12,6 +16,12 @@
     {
         <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account" class="btn">
             @p.DisplayName
+        </button>
+    }
+    if (isDebug)
+    {
+        <button type="submit" name="provider" value="guest" title="Log in using your Guest account" class="btn">
+            Guest
         </button>
     }
 }

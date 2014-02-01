@@ -35,6 +35,15 @@ namespace TellMeWYS.Controllers
         [HttpPost]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
+#if DEBUG
+            if (provider == "guest")
+            {
+                return ExternalLoginCore(
+                    provider,
+                    providerUserId: "guest",
+                    accountName: "Guest");
+            }
+#endif
             return new LamdaResult(_ =>
             {
                 OAuthWebSecurity.RequestAuthentication(
@@ -54,15 +63,22 @@ namespace TellMeWYS.Controllers
                 return Redirect("~/");
             }
 
+            return ExternalLoginCore(
+                result.Provider,
+                result.ProviderUserId,
+                // terrible hack...
+                result.Provider != "github" ? result.ExtraData["email"] : result.ExtraData["login"]);
+        }
+
+        internal ActionResult ExternalLoginCore(string provider, string providerUserId, string accountName)
+        {
             var user = new Account
             {
                 UniqueIdInProvider =
-                    (result.ProviderUserId + "@" + result.Provider)
+                    (providerUserId + "@" + provider)
                     .ToHashString<MD5>(AppSettings.Salt),
-                ProviderName = result.Provider,
-
-                // terrible hack...
-                AccountName = result.Provider != "github" ? result.ExtraData["email"] : result.ExtraData["login"]
+                ProviderName = provider,
+                AccountName = accountName
             };
 
             var db = this.DB();

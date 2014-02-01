@@ -1,6 +1,10 @@
-﻿@{
+﻿@using System.Configuration
+@using System.Web.Configuration
+@{
+    var compilationSection = ConfigurationManager.GetSection("system.web/compilation") as CompilationSection;
+    var protocol = compilationSection.Debug ? "" : "https:";
     this.Response.ContentType = "text/javascript";
-    var urlPart = System.Text.RegularExpressions.Regex.Replace(this.Request.Url.GetLeftPart(UriPartial.Authority), "^https?:", "https:");
+    var urlPart = System.Text.RegularExpressions.Regex.Replace(this.Request.Url.GetLeftPart(UriPartial.Authority), "^https?:", protocol);
     Layout = null;
 }(function(n,a,w,l,j,t,x){j=w.JSON;(n.tellMeWYS=n.tellMeWYS||{}).sendUrl=function(){
 t=w.XDomainRequest||w.XMLHttpRequest;if((j&&t)==null)a('This browser does not support this feature.');

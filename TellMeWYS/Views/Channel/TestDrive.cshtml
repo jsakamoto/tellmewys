@@ -1,8 +1,9 @@
-﻿@using System.Text.RegularExpressions
+﻿@model Channel
+@using System.Text.RegularExpressions
 @{
     Layout = null;
     var urlPart = Regex.Replace(this.Request.Url.GetLeftPart(UriPartial.Authority), "^https?:", "");
-    var urlOfJS = urlPart + Url.Action("JS", null, new { clientPort = ViewBag.ClientPort });
+    var urlOfJS = urlPart + Url.Action("JS", null, new { clientPort = Model.ClientPort.ToString() });
     var title = Localize.TestDrivePage;
 }
 <!DOCTYPE html>
@@ -65,7 +66,7 @@
     <div class="container">
         <section class="content-wrapper main-content clear-fix">
             <div class="page-header">
-                <h1>@title</h1>
+                <h1>@title - @Model.Name</h1>
             </div>
 
             <h2 class="page-A">
