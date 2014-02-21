@@ -252,4 +252,10 @@ One day, when you recieve the call from your customers to help them...
   <data name="Sure" xml:space="preserve">
     <value>Sure?</value>
   </data>
+  <data name="ChannelDeleted" xml:space="preserve">
+    <value>The channel deleted successfully.</value>
+  </data>
+  <data name="SignedOut" xml:space="preserve">
+    <value>You have successfully signed out.</value>
+  </data>
 </root>

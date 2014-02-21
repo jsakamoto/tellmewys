@@ -249,4 +249,10 @@
   <data name="Sure" xml:space="preserve">
     <value>よろしいですか?</value>
   </data>
+  <data name="ChannelDeleted" xml:space="preserve">
+    <value>チャンネルを削除しました。</value>
+  </data>
+  <data name="SignedOut" xml:space="preserve">
+    <value>サインアウトしました。</value>
+  </data>
 </root>

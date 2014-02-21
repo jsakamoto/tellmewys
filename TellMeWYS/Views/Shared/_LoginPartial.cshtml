@@ -2,12 +2,12 @@
 {
     <div class="account-box">
         <div class="account-name">@User.AccountName()</div>
+        <a href="javascript:if(confirm($.Localize.Sure))document.getElementById('logoutForm').submit()" class="btn btn-success">
+            @Localize.SignOut
+        </a>
         @using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
         {
             @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">
-                @Localize.SignOut
-            </a>
         }
     </div>
 }

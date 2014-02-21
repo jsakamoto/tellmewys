@@ -1,14 +1,16 @@
 ﻿/* override twitter bootstrap styles. */
-.btn-default,
-.btn-default:hover {
-    background-color: #ddd;
-    border-color: #ddd;
-    color: #666;
+.btn {
+    border-radius: 0;
 }
 
-    .btn-default.btn-link {
-        background-color: transparent;
-        border-color: transparent;
+.btn-primary,
+.btn-primary:hover {
+    color: #fff;
+    border-color: #4e7ac7;
+}
+
+    .btn-primary:hover {
+        border-color: #3965b3;
     }
 
 #body > section,
@@ -72,13 +74,15 @@ input[type="checkbox"].input-validation-error {
     background-position: right center;
     padding-right: 56px;
     border-radius: 0px;
+    line-height: 35px;
     height: 60px;
     border-right-width: 10px;
 }
 
 .jumbotron h1 {
-    margin-top:0;
+    margin-top: 0;
 }
+
 .jumbotron .title {
     float: left;
 }
@@ -87,9 +91,9 @@ input[type="checkbox"].input-validation-error {
     float: right;
 }
 
-    .jumbotron h2 {
-        clear: both;
-    }
+.jumbotron h2 {
+    clear: both;
+}
 
 
 
@@ -150,6 +154,8 @@ input[type="checkbox"].input-validation-error {
 
     .account-box .account-name {
         color: #ccc;
+        display: inline;
+        margin-right: 1em;
     }
 
 /* immersive mode */

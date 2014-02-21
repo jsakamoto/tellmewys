@@ -10,7 +10,8 @@ namespace TellMeWYS
         {
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/bootstrap.js"
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/msgbar.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
