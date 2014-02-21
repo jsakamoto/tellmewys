@@ -29,7 +29,7 @@ namespace TellMeWYS.Controllers
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
-            return Redirect("~/");
+            return Redirect("~/?msg=" + Localize.SignedOut);
         }
 
         [HttpPost]

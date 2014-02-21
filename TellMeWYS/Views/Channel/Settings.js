@@ -25,7 +25,7 @@
         if (confirm($.Localize.Sure) === false) return;
         $.post($(this).attr('href'))
             .done(function () {
-                location.href = $.app.channelListUrl;
+                location.href = $.app.channelListUrl + '?msg=' + encodeURI($.Localize.ChannelDeleted);
             })
             .fail(function () {
                 alert('Oops... something wrong.');

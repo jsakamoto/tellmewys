@@ -277,6 +277,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\msgbar.js" />
     <Content Include="Views\Channel\Settings.js" />
     <Content Include="Views\Channel\Index.js" />
     <Content Include="Views\Channel\List.js" />
@@ -318,6 +319,7 @@
     <EmbeddedResource Include="Localize.ja.resx" />
     <EmbeddedResource Include="Localize.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localize.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

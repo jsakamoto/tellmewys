@@ -22,7 +22,7 @@
 
 <h3>@Localize.Members</h3>
 <div>
-    <table id="members-holder">
+    <table id="members-holder" class="table table-striped">
         <thead>
             <tr>
                 <th>@Localize.AccountName</th>
@@ -99,8 +99,9 @@
 
 @section scripts {
     <script>
-        $.app = $.app || {};
-        $.app.channelListUrl = '@Url.Action("List")';
+    $.app = $.app || {};
+    $.app.channelListUrl = '@Url.Action("List")';
+        $.Localize.ChannelDeleted = '@Localize.ChannelDeleted';
     </script>
     <script src="~/Views/Channel/Settings.js"></script>
 }
