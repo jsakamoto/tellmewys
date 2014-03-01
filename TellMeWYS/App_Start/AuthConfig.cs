@@ -2,6 +2,7 @@
 using System.Reflection;
 using DotNetOpenAuth.AspNet.Clients;
 using Microsoft.Web.WebPages.OAuth;
+using Toolbelt.DynamicBinderExtension;
 
 namespace TellMeWYS
 {
@@ -22,9 +23,7 @@ namespace TellMeWYS
             // Hack: Fix unmatch of google client provider name and display name upper/lower case, 
             // but ProviderName property is read only, so I hacked this by reflection.
             var googleClient = new GoogleOpenIdClient();
-            typeof(OpenIdClient)
-                .InvokeMember("providerName", BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Instance, null, googleClient,
-                new object[] { "Google" });
+            googleClient.ToDynamic().providerName = "Google";
             OAuthWebSecurity.RegisterClient(googleClient, googleClient.ProviderName, null);
         }
     }
