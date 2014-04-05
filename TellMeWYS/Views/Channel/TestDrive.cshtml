@@ -90,33 +90,34 @@
             <hr />
 
             <div>
-                <a id="btn-send-url" href="#" class="btn btn-black btn-lg btn-block">
-                    &lt;a id=&quot;btn-send-url&quot; href=&quot;#&quot;&gt;
-                    @Localize.SendURL
+                <a id="btn-send" href="#" class="btn btn-black btn-lg btn-block">
+                    &lt;a id=&quot;btn-send&quot; href=&quot;#&quot;&gt;
+                    @Localize.SendURLandScreen
                     &lt;/a&gt;
                 </a>
             </div>
 
             <hr />
 
-            <pre><span>&lt;script src="@urlOfJS"&gt;&lt;/script&gt;<br />&lt;script&gt;<span id="code"></span>&lt;/script&gt;</span>
-            </pre>
+            <pre><span>&lt;script src="@urlOfJS"&gt;&lt;/script&gt;<br />&lt;script&gt;<span id="code"></span>&lt;/script&gt;</span></pre>
 
         </section>
     </div>
     @Scripts.Render("~/bundles/js")
     <script src="@urlOfJS"></script>
-    <script id="send-url-script">
+
+    <script id="send-url-and-screen-script">
         $(function () {
-            $('#btn-send-url').click(function (e) {
+            $('#btn-send').click(function (e) {
                 e.preventDefault();
                 tellMeWYS.sendUrl();
+                tellMeWYS.sendScreen();
             });
         })
     </script>
     <script>
         $(function () {
-            $('#code').text($('#send-url-script').html());
+            $('#code').text($('#send-url-and-screen-script').html().replace(/^[ ]{4}/gm, ''));
 
             var $body = $('body');
             var updateUIState = function () {

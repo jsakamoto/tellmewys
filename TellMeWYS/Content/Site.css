@@ -100,6 +100,7 @@ input[type="checkbox"].input-validation-error {
 /* Channel Settings */
 .channel-settings h3 {
     margin-top: 1.5em;
+    margin-left: -1em;
 }
 
 .channel-settings .channel-name {
@@ -144,6 +145,31 @@ input[type="checkbox"].input-validation-error {
     display: block;
 }
 
+#log-holder .image img {
+    border: 1px solid #ccc;
+    max-width: 320px;
+    cursor: pointer;
+}
+
+    #log-holder .image img:hover {
+        opacity: 0.5;
+    }
+
+    #log-holder .image img.full-size {
+        position: absolute;
+        top: 80px;
+        left: 30px;
+        max-width: none;
+        opacity: 1.0;
+        z-index: 1;
+        box-shadow: #000 0px 0px 20px;
+        margin-bottom: 30px;
+    }
+
+#log-holder .image .time {
+    width: 320px;
+}
+
 /* account box */
 
 .account-box {
@@ -167,4 +193,31 @@ input[type="checkbox"].input-validation-error {
 footer .powered-by {
     color: #888;
     font-size: 90%;
+    border-top: 1px solid #add5f7;
+    margin-top:5em;
+    padding-top:1em;
 }
+
+    footer .powered-by a:first-child {
+        margin-left: 0.5em;
+    }
+
+    footer .powered-by a {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+    }
+
+        footer .powered-by a.with-logo {
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 18px;
+        }
+
+            footer .powered-by a.with-logo.aspnet-mvc {
+                background-image: url(images/aspnet_mvc_16.png);
+            }
+
+            footer .powered-by a.with-logo.azure-websites {
+                background-image: url(images/azure_websites_b16.png);
+            }

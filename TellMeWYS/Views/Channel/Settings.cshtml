@@ -64,21 +64,18 @@
     @{
         var urlOfJS = "//" + this.Request.Url.Host + Url.Action("JS", null, new { clientPort = Model.ClientPort.ToString("N") });
     }
-    <h5>URL</h5>
+    <h4>URL</h4>
     <div>
         <a href="@urlOfJS" target="_blank">@urlOfJS</a>
     </div>
 
-    <h5>@Localize.Example</h5>
+    <h4>@Localize.Example</h4>
     <div>
         <p>@Localize.JS_Example_IncludeJavaScriptLikeThis</p>
-        <code>
-            &lt;script src="@urlOfJS"&gt;&lt;/script&gt;
-        </code>
+        <pre>&lt;script src="@urlOfJS"&gt;&lt;/script&gt;</pre>
         <p>@Localize.JS_Example_Call</p>
-        <code>
-            window.tellMeWYS.sendUrl();
-        </code>
+        <pre>window.tellMeWYS.sendUrl();
+window.tellMeWYS.sendScreen();</pre>
     </div>
 </div>
 

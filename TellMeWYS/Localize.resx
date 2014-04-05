@@ -153,7 +153,7 @@
 
 This site aimed at helping telefhone supporter for your web site.
 
-You can get the URL that your customer on your web site visiting now via this site by customer's action.</value>
+You can get the **URL** and **screen shot** of the page that your customer on your web site visiting now via this site by customer's action.</value>
   </data>
   <data name="Home_GotoChannelList" xml:space="preserve">
     <value>Goto Your Channel List</value>
@@ -174,7 +174,7 @@ click "Open Test Drive Page" link to open the test drive page in new tab or wind
 1. Sign in with Microsoft or Google account. (It's Free, No purchase.)
 2. Create "Channel", and get the URL of the JavaScript file that provide small function at settings page.
 3. Embed the including the JavaScript file that you got at "Channel" setting page into your web site,
-4. and handle the click event any UI element (such as "Help Me!" button) and call "window.tellMeWYS.sendUrl()".</value>
+4. and handle the click event any UI element (such as "Help Me!" button) and call "window.tellMeWYS.sendUrl()" and/or "window.tellMeWYS.sendScreen()".</value>
   </data>
   <data name="Home_SignIn_SignUp" xml:space="preserve">
     <value>Sign In / Sign Up (Free)</value>
@@ -186,7 +186,7 @@ One day, when you recieve the call from your customers to help them...
 
 1. Sign in this site and open "Channel" page for listen to the messages from your web site.
 2. Ask them to click the UI elemet that you wired up the code of calling "sendUrl" method.
-3. If your customer click the elemnt, and fire "window.tellMeWYS.sendUrl()", then the URL ot the page that your customer opend now appear at "Channel" page!
+3. If your customer click the elemnt, and fire "window.tellMeWYS.sendUrl()" and/or "window.tellMeWYS.sendScreen()", then **the URL and/or screnn shot of the page that your customer opend now appear at "Channel" page!**
 4.You can click the URL on "Channel" page, then open the web page that the same of your customer seeing now.</value>
   </data>
   <data name="JavaScriptLibrary" xml:space="preserve">
@@ -237,8 +237,8 @@ One day, when you recieve the call from your customers to help them...
   <data name="NoTitle" xml:space="preserve">
     <value>(No Title)</value>
   </data>
-  <data name="SendURL" xml:space="preserve">
-    <value>Send URL</value>
+  <data name="SendURLandScreen" xml:space="preserve">
+    <value>Send URL and Screen Shot</value>
   </data>
   <data name="TestDrivePage" xml:space="preserve">
     <value>Test Drive Page</value>

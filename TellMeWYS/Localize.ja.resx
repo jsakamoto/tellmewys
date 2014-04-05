@@ -153,7 +153,7 @@
 
 このサイトは、あなたのWebサイトにおける電話サポートを支援する目的のものです。
 
-あなたのWebサイトに滞在している顧客からの操作によって、このサイトを介して、今その顧客が開いている URL を知ることができるようになります。</value>
+あなたのWebサイトに滞在している顧客からの操作によって、このサイトを介して、今その顧客が開いている **URL を知ったり、開いているページのスクリーンショットを得る** ことができるようになります。</value>
   </data>
   <data name="Home_GotoChannelList" xml:space="preserve">
     <value>チャンネルリストへ移動</value>
@@ -164,7 +164,7 @@
 1. Microsoft または Google アカウントでサインインします。(無料です)
 2. "チャンネル" を作成し, 設定ページから JavaScript ファイルの URL を入手します。
 3. その JavaScript ファイルを読み込むよう、あなたのWebサイトに設置し、,
-4. そして何かのUI要素 (例えば "Help Me!" ボタンのような) のクリックイベントをハンドルして "tellMeWYS.sendUrl()" メソッドを呼び出すようにします。</value>
+4. そして何かのUI要素 (例えば "Help Me!" ボタンのような) のクリックイベントをハンドルして "tellMeWYS.sendUrl()" および "tellMeWYS.sendScreen()" メソッドを呼び出すようにします。</value>
   </data>
   <data name="Home_SignIn_SignUp" xml:space="preserve">
     <value>サインイン / サインアップ (無料)</value>
@@ -224,8 +224,8 @@
 ユーザーからサポート依頼の電話がかかってきたら...
 
 1. このサイトにサインインし、"チャンネル" ページを開いて URL のメッセージを受信待機します。
-2. ユーザーに、あらかじめ "sendUrl" メソッド呼び出しを仕掛けておいた UI 要素をクリックしてもらうよう伝えます。
-3. ユーザーがそのUI要素をクリックして、 "window.tellMeWYS.sendUrl()" が呼び出されると、**そのユーザーが今開いているページの URL が、"チャンネル" ページに現れます!**
+2. ユーザーに、あらかじめ "sendUrl" または "sendScreen" メソッド呼び出しを仕掛けておいた UI 要素をクリックしてもらうよう伝えます。
+3. ユーザーがそのUI要素をクリックして、 "window.tellMeWYS.sendUrl()" または "window.tellMeWYS.sendScreen()" が呼び出されると、**そのユーザーが今開いているページの URL またはページのスクリーンショットが、"チャンネル" ページに現れます!**
 4. "チャンネル" ページに現れた URLをクリックすれば、ユーザーが現在開いているのと同じページを開くことができます。</value>
   </data>
   <data name="JumpToSamplePage" xml:space="preserve">
@@ -234,8 +234,8 @@
   <data name="NoTitle" xml:space="preserve">
     <value>(無題)</value>
   </data>
-  <data name="SendURL" xml:space="preserve">
-    <value>URL を送信</value>
+  <data name="SendURLandScreen" xml:space="preserve">
+    <value>URL と画面スナップショットを送信</value>
   </data>
   <data name="TestDrivePage" xml:space="preserve">
     <value>テストページ</value>

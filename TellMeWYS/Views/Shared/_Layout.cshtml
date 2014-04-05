@@ -31,14 +31,27 @@
             @RenderBody()
         </section>
 
-        <hr />
-
         <footer>
-            <p class="powered-by">Powered by ASP.NET MVC / SignalR / Windows Azure Web sites</p>
+            <p class="powered-by">
+                Powered by
+                <a href="http://www.asp.net/mvc" target="_blank" class="with-logo aspnet-mvc">
+                    ASP.NET MVC
+                </a>
+                / <a href="https://github.com/SignalR/SignalR/blob/master/README.md" target="_blank">
+                    SignalR
+                </a>
+                / <a href="http://www.windowsazure.com/en-us/develop/net/aspnet/?WT.mc_id=ACFB637C3" target="_blank" class="with-logo azure-websites">
+                    Windows Azure Web sites
+                </a>
+                / <a href="http://html2canvas.hertzen.com/" target="_blank">
+                    html2canvas
+                </a>
+            </p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/js")
+    <script src="~/Scripts/html2canvas.js"></script>
     <script>
         $.app = $.app || {};
         $.Localize = {
