@@ -251,6 +251,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\aspnet_mvc_16.png" />
+    <Content Include="Content\images\aspnet_mvc_24.png" />
+    <Content Include="Content\images\aspnet_mvc_32.png" />
+    <Content Include="Content\images\aspnet_mvc_c16.png" />
+    <Content Include="Content\images\aspnet_mvc_c24.png" />
+    <Content Include="Content\images\aspnet_mvc_c32.png" />
+    <Content Include="Content\images\azure_websites_b16.png" />
+    <Content Include="Content\images\azure_websites_b24.png" />
+    <Content Include="Content\images\azure_websites_b32.png" />
     <Content Include="Content\images\back.png" />
     <Content Include="Content\images\next.cw.png" />
     <Content Include="Content\images\next.png" />
@@ -341,7 +350,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59061</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
