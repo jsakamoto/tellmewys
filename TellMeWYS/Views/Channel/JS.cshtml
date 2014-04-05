@@ -6,9 +6,31 @@
     this.Response.ContentType = "text/javascript";
     var urlPart = System.Text.RegularExpressions.Regex.Replace(this.Request.Url.GetLeftPart(UriPartial.Authority), "^https?:", protocol);
     Layout = null;
-}(function(n,a,w,l,j,t,x){j=w.JSON;(n.tellMeWYS=n.tellMeWYS||{}).sendUrl=function(){
-t=w.XDomainRequest||w.XMLHttpRequest;if((j&&t)==null)a('This browser does not support this feature.');
-else{x=new t;x.onerror=function(){a('Error occurred.')}
-x.open('POST','@(urlPart)/channel/message');
-x.send(j.stringify({clientPort:'@(ViewBag.ClientPort)',url:l.href}));
-}}})(@(ViewBag.NameSpace),alert,window,location);
+}(function(n, a, w, l, d, u, p,  b,j,t,x,s,f,o,r){
+    b = d.body;    
+    j = w.JSON;
+    t = w.XDomainRequest||w.XMLHttpRequest;
+    r = function(m){
+        if ((j&&t)==null) a('This browser does not support this feature.');
+        else {
+            x = new t;
+            x.onerror = function(){a('Error occurred.')}
+            x.open('POST',u);
+            m.clientPort = p;
+            x.send(j.stringify(m));
+        }
+    };
+    o = (n.tellMeWYS=n.tellMeWYS||{});
+    o.sendUrl = function() {r({url:l.href})}
+    f = function() {
+        if(typeof(html2canvas)=='undefined'){
+            s = d.createElement('script');
+            s.src='@(urlPart)/Scripts/html2canvas.js';
+            s.onload = f;
+            s.onreadystatechange = function(){ switch(this.readyState){case'loaded':case'complete':f();} };
+            b.appendChild(s);
+        }
+        else html2canvas(b, {onrendered:function(c){r({image:c.toDataURL()})}});
+    }
+    o.sendScreen = f;
+})(@(ViewBag.NameSpace), alert, window, location, document, '@(urlPart)/channel/message', '@(ViewBag.ClientPort)');

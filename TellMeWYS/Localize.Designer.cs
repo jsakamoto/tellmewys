@@ -174,7 +174,7 @@ namespace TellMeWYS {
         ///
         ///This site aimed at helping telefhone supporter for your web site.
         ///
-        ///You can get the URL that your customer on your web site visiting now via this site by customer&apos;s action..
+        ///You can get the **URL** and **screen shot** of the page that your customer on your web site visiting now via this site by customer&apos;s action..
         /// </summary>
         public static string Home_Description {
             get {
@@ -213,7 +213,7 @@ namespace TellMeWYS {
         ///1. Sign in with Microsoft or Google account. (It&apos;s Free, No purchase.)
         ///2. Create &quot;Channel&quot;, and get the URL of the JavaScript file that provide small function at settings page.
         ///3. Embed the including the JavaScript file that you got at &quot;Channel&quot; setting page into your web site,
-        ///4. and handle the click event any UI element (such as &quot;Help Me!&quot; button) and call &quot;window.tellMeWYS.sendUrl()&quot;..
+        ///4. and handle the click event any UI element (such as &quot;Help Me!&quot; button) and call &quot;window.tellMeWYS.sendUrl()&quot; and/or &quot;window.tellMeWYS.sendScreen()&quot;..
         /// </summary>
         public static string Home_Preparation {
             get {
@@ -237,8 +237,8 @@ namespace TellMeWYS {
         ///
         ///1. Sign in this site and open &quot;Channel&quot; page for listen to the messages from your web site.
         ///2. Ask them to click the UI elemet that you wired up the code of calling &quot;sendUrl&quot; method.
-        ///3. If your customer click the elemnt, and fire &quot;window.tellMeWYS.sendUrl()&quot;, then the URL ot the page that your customer opend now appear at &quot;Channel&quot; page!
-        ///4.You can click the URL on &quot;Channel&quot; page, then open the web page that the same o [rest of string was truncated]&quot;;.
+        ///3. If your customer click the elemnt, and fire &quot;window.tellMeWYS.sendUrl()&quot; and/or &quot;window.tellMeWYS.sendScreen()&quot;, then **the URL and/or screnn shot of the page that your customer opend now appear at &quot;Channel&quot; page!**
+        ///4.You can click the [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Home_Usage {
             get {
@@ -346,11 +346,11 @@ namespace TellMeWYS {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send URL.
+        ///   Looks up a localized string similar to Send URL and Screen Shot.
         /// </summary>
-        public static string SendURL {
+        public static string SendURLandScreen {
             get {
-                return ResourceManager.GetString("SendURL", resourceCulture);
+                return ResourceManager.GetString("SendURLandScreen", resourceCulture);
             }
         }
         

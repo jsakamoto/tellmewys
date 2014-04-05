@@ -53,6 +53,7 @@ namespace TellMeWYS.Controllers
                 requestBody = JObject.Parse(sr.ReadToEnd());
             var clientPort = (string)requestBody.clientPort;
             var url = (string)requestBody.url;
+            var imageDataUrl = (string)requestBody.image;
 
             var clientPortGuid = default(Guid);
             if (Guid.TryParse(clientPort, out clientPortGuid) == false) return HttpNotFound();
@@ -60,16 +61,23 @@ namespace TellMeWYS.Controllers
             var db = this.DB();
             var channel = db.Channels.FirstOrDefault(_ => _.ClientPort == clientPortGuid);
             if (channel == null) return HttpNotFound();
-
-            var isSafe = false;
-            var exactUri = default(Uri);
-            if (Uri.TryCreate(url, UriKind.Absolute, out exactUri) == true)
-            {
-                isSafe = (exactUri.Scheme == "http" || exactUri.Scheme == "https");
-            }
-
             var channelHubContext = SignalR.GlobalHost.ConnectionManager.GetHubContext<ChannelHub>();
-            channelHubContext.Clients.Group(channel.Id.ToString("N")).SendUrl(url, isSafe);
+            var signalRGroup = channelHubContext.Clients.Group(channel.Id.ToString("N"));
+
+            if (string.IsNullOrEmpty(url) == false)
+            {
+                var isSafe = false;
+                var exactUri = default(Uri);
+                if (Uri.TryCreate(url, UriKind.Absolute, out exactUri) == true)
+                {
+                    isSafe = (exactUri.Scheme == "http" || exactUri.Scheme == "https");
+                }
+                signalRGroup.SendUrl(url, isSafe);
+            }
+            if (string.IsNullOrEmpty(imageDataUrl) == false)
+            {
+                signalRGroup.SendImage(imageDataUrl);
+            }
 
             return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
